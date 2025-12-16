@@ -19,11 +19,11 @@ namespace Hackathon.Ai
         {
             _folderId = Constants._idYandexFolder;
             _httpClient = new HttpClient();
-            Env.Load();
-            _apiKey = Env.GetString("YANDEX_API_KEY", "Variable not found");
+            Env.TraversePath().Load();
+            _apiKey = Env.GetString("YANDEX_GPT_API_KEY", "Variable not found");
         }
 
-        public async Task<string> GetGptResponseAsync(string userMessage)
+        public async Task<string> GetGptResponseAsync(string userMessage, string promt)
         {
             var request = new
             {
@@ -39,7 +39,7 @@ namespace Hackathon.Ai
                     new
                     {
                         role = "system",
-                        text = "Ты бот помощник, который помогает студентам определиться с выбором направления для создания своего бизнес проекта. Генерируй по 5 гипотез"
+                        text = promt
                     },
                     new
                     {

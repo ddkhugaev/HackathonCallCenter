@@ -12,9 +12,9 @@
 
         public YandexSpeechKitClient()
         {
-            Env.Load();
+            Env.TraversePath().Load();
 
-            _apiKey = Env.GetString("YANDEX_API_KEY", "Variable not found");
+            _apiKey = Env.GetString("YANDEX_SPEECHKIT_API_KEY", "Variable not found");
             _httpClient = new HttpClient();
 
             // Настраиваем заголовок Authorization с API Key
@@ -135,7 +135,6 @@
 
             var textBuilder = new StringBuilder();
 
-            Console.WriteLine("\nText chunks:");
             foreach (var chunk in chunks)
             {
                 var text = chunk
@@ -143,7 +142,6 @@
                     .GetProperty("text")
                     .GetString();
 
-                Console.WriteLine($"  - {text}");
                 textBuilder.AppendLine(text);
             }
 

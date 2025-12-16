@@ -10,7 +10,7 @@ class Program
             var speechClient = new YandexSpeechKitClient();
 
             //Тестовая ссылка на аудио (можно заменить на свою)
-            string audioUri = "https://storage.yandexcloud.net/pictures-sogu/%D1%82%D0%B5%D1%81%D1%82%20%D0%B3%D1%81.ogg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEpmZKNWc7mXWszkSkTE2E%2F20251215%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20251215T201130Z&X-Amz-Expires=86400&X-Amz-Signature=8c1f4f9c6437c679d2e6d4a3b5009d16c12624b9622d9da44928e8247def360c&X-Amz-SignedHeaders=host&response-content-disposition=attachment";
+            string audioUri = "https://storage.yandexcloud.net/pictures-sogu/%D0%95%D0%BB%D0%B5%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BB%D0%BB%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D0%BC%D1%83%D0%B7%D0%B5%D0%B9.ogg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEpmZKNWc7mXWszkSkTE2E%2F20251216%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20251216T142419Z&X-Amz-Expires=36000&X-Amz-Signature=194afa1940feb6a454947635c1c3ddbfb9cba3f1183ec2c3167edf51fa928b90&X-Amz-SignedHeaders=host&response-content-disposition=attachment";
 
             Console.WriteLine($"\nИспользуемая ссылка на аудио: {audioUri}");
 
@@ -24,6 +24,11 @@ class Program
             Console.WriteLine(new string('=', 50));
             Console.WriteLine(recognizedText);
             Console.WriteLine(new string('=', 50));
+
+            Console.WriteLine("\n===Обозначаем роли в диалоге===");
+            var gptClient = new YandexGptClient();
+            var result = await gptClient.GetGptResponseAsync(recognizedText, "Определение дикторов в результатах распознавания. Говорит 'оператор' и 'клиент'. Ты должен перед каждым началом фразы приписать кто ее говорит.");
+            Console.WriteLine(result);
 
         }
         catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Unauthorized)
