@@ -39,7 +39,7 @@ namespace Hackathon.Ai
                     new
                     {
                         role = "system",
-                        text = promt
+                        text = $"{promt}\n\nОтвечай простым текстом без форматирования (без звездочек, жирного текста, курсива и т.д.)"
                     },
                     new
                     {

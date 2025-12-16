@@ -10,7 +10,7 @@ class Program
             var speechClient = new YandexSpeechKitClient();
 
             //Тестовая ссылка на аудио (можно заменить на свою)
-            string audioUri = "https://storage.yandexcloud.net/pictures-sogu/%D0%95%D0%BB%D0%B5%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BB%D0%BB%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D0%BC%D1%83%D0%B7%D0%B5%D0%B9.ogg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEpmZKNWc7mXWszkSkTE2E%2F20251216%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20251216T142419Z&X-Amz-Expires=36000&X-Amz-Signature=194afa1940feb6a454947635c1c3ddbfb9cba3f1183ec2c3167edf51fa928b90&X-Amz-SignedHeaders=host&response-content-disposition=attachment";
+            string audioUri = "https://storage.yandexcloud.net/pictures-sogu/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%20%D0%BA%D0%BE%D0%BB%D0%BB%20%D1%86%D0%B5%D0%BD%D1%82%D1%80.ogg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEpmZKNWc7mXWszkSkTE2E%2F20251216%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20251216T155130Z&X-Amz-Expires=3600&X-Amz-Signature=592c874bbb45087b6c107a0f97bb76dfe61f50f44a88b4ec9f144181a693d378&X-Amz-SignedHeaders=host&response-content-disposition=attachment";
 
             Console.WriteLine($"\nИспользуемая ссылка на аудио: {audioUri}");
 
@@ -30,6 +30,16 @@ class Program
             var result = await gptClient.GetGptResponseAsync(recognizedText, "Определение дикторов в результатах распознавания. Говорит 'оператор' и 'клиент'. Ты должен перед каждым началом фразы приписать кто ее говорит.");
             Console.WriteLine(result);
 
+            var performanceEvaluation = await gptClient.GetGptResponseAsync(result, "Проанализируй текст, полученный из аудиозаписи, по следующим критериям: структура диалога, качество коммуникации, грамотность речи, достижение цели, тон общения, наличие конфликтных моментов.\r\nОцени диалог от 1 до 10, выдели сильные и слабые стороны. Дай рекомендации по улучшению коммуникации.");
+            Console.WriteLine("\n" + new string('=', 50));
+            Console.WriteLine("Оценка работы оператора");
+            Console.WriteLine(new string('=', 50));
+            Console.WriteLine(performanceEvaluation);
+            Console.WriteLine(new string('=', 50));
+
+            Console.WriteLine("Личные данные клиента:");
+            var personalData = await gptClient.GetGptResponseAsync(result, "Выдели (если есть) продиктованные клиентом персональные данные (адрес, номер счета и т.п.), не искажай смысл.");
+            Console.WriteLine(personalData);
         }
         catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Unauthorized)
         {
@@ -45,6 +55,8 @@ class Program
             Console.WriteLine($"\n❌ ОШИБКА: {ex.GetType().Name}: {ex.Message}");
             Console.WriteLine("StackTrace: " + ex.StackTrace);
         }
+
+       
 
         Console.WriteLine("\nНажмите любую клавишу для выхода...");
         Console.ReadKey();
