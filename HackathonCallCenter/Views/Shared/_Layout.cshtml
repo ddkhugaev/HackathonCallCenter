@@ -3,44 +3,52 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HackathonCallCenter</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HackathonCallCenter.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - VoiceAnalytics</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HackathonCallCenter</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="Index">Профиль</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-wave-square"></i>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            <div class="logo-text">VoiceAnalytics</div>
+        </div>
+
+        <div class="nav-menu">
+            <div class="nav-section">Основное</div>
+            <a asp-controller="Home" asp-action="Index" class="nav-item">
+                <i class="fas fa-home"></i><span>Дашборд</span>
+            </a>
+            <a asp-controller="Home" asp-action="Calls" class="nav-item">
+                <i class="fas fa-phone-alt"></i><span>Звонки</span>
+            </a>
+            <a asp-controller="Home" asp-action="Operators" class="nav-item">
+                <i class="fas fa-user-friends"></i><span>Операторы</span>
+            </a>
+            <a asp-controller="Home" asp-action="Analytics" class="nav-item">
+                <i class="fas fa-chart-bar"></i><span>Аналитика</span>
+            </a>
+
+            <div class="nav-section">AI-Анализ</div>
+            <a asp-controller="Home" asp-action="AiAnalysis" class="nav-item">
+                <i class="fas fa-robot"></i><span>Анализ эмоций</span>
+            </a>
+            <a asp-controller="Home" asp-action="Recommendations" class="nav-item">
+                <i class="fas fa-lightbulb"></i><span>Рекомендации</span>
+            </a>
+            <a asp-controller="Home" asp-action="ProblemDetection" class="nav-item">
+                <i class="fas fa-exclamation-triangle"></i><span>Выявление проблем</span>
+            </a>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - HackathonCallCenter - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <div class="main-content">
+        @RenderBody()
+    </div>
+
+    <script src="~/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

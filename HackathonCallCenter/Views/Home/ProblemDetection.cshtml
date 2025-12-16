@@ -1,0 +1,410 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css">
+    <link rel="stylesheet" href="~/css/charts.css">
+}
+
+<div class="main-content">
+    <div class="header">
+        <div class="header-title">
+            <h1>Выявление проблем</h1>
+            <p>Автоматическое обнаружение проблем в звонках</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary">
+                <i class="fas fa-bell"></i>
+                Настройка оповещений
+            </button>
+            <button class="btn btn-primary">
+                <i class="fas fa-play"></i>
+                Запуск анализа
+            </button>
+            <div class="user-info">
+                <div class="user-avatar">АИ</div>
+                <div>
+                    <div style="font-weight: 600;">Амридин Назаров</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-color);">Администратор</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика проблем -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #fee2e2; color: var(--danger-color);">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="stat-info">
+                <h3>42</h3>
+                <p>Критических проблем</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #fef3c7; color: var(--warning-color);">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="stat-info">
+                <h3>89</h3>
+                <p>Предупреждений</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #dbeafe; color: var(--primary-color);">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+                <h3>76%</h3>
+                <p>Проблем решено</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #d1fae5; color: var(--success-color);">
+                <i class="fas fa-chart-line-down"></i>
+            </div>
+            <div class="stat-info">
+                <h3>-31%</h3>
+                <p>Снижение проблем</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Критические проблемы -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <i class="fas fa-fire" style="color: var(--danger-color); margin-right: 10px;"></i>
+                Критические проблемы
+            </div>
+            <div class="card-actions">
+                <span class="badge badge-danger">Требуют немедленного внимания</span>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">
+            <!-- Проблема 1 -->
+            <div class="ai-card" style="border: 2px solid var(--danger-color);">
+                <div class="ai-title">
+                    <i class="fas fa-skull-crossbones" style="color: var(--danger-color);"></i>
+                    Резкий рост негативных эмоций
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Тип:</div>
+                        <div class="ai-item-value" style="color: var(--danger-color);">Эмоциональная проблема</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Уровень:</div>
+                        <div class="ai-item-value" style="color: var(--danger-color);">Критический</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Влияние:</div>
+                        <div class="ai-item-value">+45% негативных эмоций за неделю</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Причина:</div>
+                        <div class="ai-item-value">Изменение политики возвратов</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Рекомендация:</div>
+                        <div class="ai-item-value">Пересмотреть политику и обучить операторов</div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                    <button class="btn btn-danger" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">
+                        <i class="fas fa-play"></i> Начать решение
+                    </button>
+                    <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">
+                        <i class="fas fa-assign"></i> Назначить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Проблема 2 -->
+            <div class="ai-card" style="border: 2px solid var(--danger-color);">
+                <div class="ai-title">
+                    <i class="fas fa-user-slash" style="color: var(--danger-color);"></i>
+                    Низкая эффективность оператора
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Тип:</div>
+                        <div class="ai-item-value" style="color: var(--danger-color);">Персонал</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Уровень:</div>
+                        <div class="ai-item-value" style="color: var(--danger-color);">Критический</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Влияние:</div>
+                        <div class="ai-item-value">Конверсия упала с 87% до 62%</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Оператор:</div>
+                        <div class="ai-item-value">Иван Кузнецов</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Рекомендация:</div>
+                        <div class="ai-item-value">Провести индивидуальный коучинг и оценку</div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                    <button class="btn btn-danger" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">
+                        <i class="fas fa-play"></i> Начать решение
+                    </button>
+                    <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">
+                        <i class="fas fa-assign"></i> Назначить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Все обнаруженные проблемы -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Все обнаруженные проблемы</div>
+            <div class="card-actions">
+                <select class="form-control" style="width: 200px;">
+                    <option value="">Все статусы</option>
+                    <option value="new">Новые</option>
+                    <option value="in-progress">В работе</option>
+                    <option value="resolved">Решены</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Тип проблемы</th>
+                        <th>Уровень</th>
+                        <th>Описание</th>
+                        <th>Обнаружена</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#P-101</td>
+                        <td>Техническая ошибка</td>
+                        <td><span class="badge badge-warning">Средний</span></td>
+                        <td>Частые жалобы на плохую связь в вечернее время</td>
+                        <td>Сегодня, 14:30</td>
+                        <td><span class="badge badge-warning">В работе</span></td>
+                        <td>
+                            <button class="btn-icon" title="Подробнее">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <button class="btn-icon" title="Назначить">
+                                <i class="fas fa-user-tag"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#P-100</td>
+                        <td>Скрипт продаж</td>
+                        <td><span class="badge badge-danger">Высокий</span></td>
+                        <td>Неэффективный сценарий для новых клиентов</td>
+                        <td>Вчера, 11:15</td>
+                        <td><span class="badge badge-primary">Новая</span></td>
+                        <td>
+                            <button class="btn-icon" title="Подробнее">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <button class="btn-icon" title="Назначить">
+                                <i class="fas fa-user-tag"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#P-099</td>
+                        <td>Обучение операторов</td>
+                        <td><span class="badge badge-warning">Средний</span></td>
+                        <td>Недостаточные знания о новом продукте</td>
+                        <td>2 дня назад</td>
+                        <td><span class="badge badge-success">Решена</span></td>
+                        <td>
+                            <button class="btn-icon" title="Подробнее">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <button class="btn-icon" title="Отчет">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#P-098</td>
+                        <td>Клиентский сервис</td>
+                        <td><span class="badge badge-danger">Высокий</span></td>
+                        <td>Длительное время ожидания ответа</td>
+                        <td>3 дня назад</td>
+                        <td><span class="badge badge-warning">В работе</span></td>
+                        <td>
+                            <button class="btn-icon" title="Подробнее">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <button class="btn-icon" title="Назначить">
+                                <i class="fas fa-user-tag"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#P-097</td>
+                        <td>Техническая ошибка</td>
+                        <td><span class="badge badge-primary">Низкий</span></td>
+                        <td>Проблемы с записью звонков в понедельник</td>
+                        <td>5 дней назад</td>
+                        <td><span class="badge badge-success">Решена</span></td>
+                        <td>
+                            <button class="btn-icon" title="Подробнее">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <button class="btn-icon" title="Отчет">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#P-096</td>
+                        <td>Эмоциональный анализ</td>
+                        <td><span class="badge badge-warning">Средний</span></td>
+                        <td>Рост раздражения клиентов при упоминании цены</td>
+                        <td>Неделю назад</td>
+                        <td><span class="badge badge-warning">В работе</span></td>
+                        <td>
+                            <button class="btn-icon" title="Подробнее">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <button class="btn-icon" title="Назначить">
+                                <i class="fas fa-user-tag"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Графики проблем -->
+    <div class="charts-grid">
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Распределение проблем по типам</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="problemsByTypeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Динамика обнаружения проблем</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="problemsTrendChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI анализ корневых причин -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <i class="fas fa-robot" style="color: var(--primary-color); margin-right: 10px;"></i>
+                AI анализ корневых причин проблем
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-chart-line-down"></i>
+                    Основная причина снижения конверсии
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Проблема:</div>
+                        <div class="ai-item-value">Падение конверсии на 12%</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Коренная причина:</div>
+                        <div class="ai-item-value" style="color: var(--danger-color);">Изменение конкурентного ландшафта</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Вторичные причины:</div>
+                        <div class="ai-item-value">
+                            <div>1. Появление нового конкурента</div>
+                            <div>2. Устаревшие скрипты продаж</div>
+                            <div>3. Недостаточное обучение операторов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-angry"></i>
+                    Рост негативных эмоций клиентов
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Проблема:</div>
+                        <div class="ai-item-value">+45% негативных эмоций</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Коренная причина:</div>
+                        <div class="ai-item-value" style="color: var(--danger-color);">Изменение политики возвратов</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Вторичные причины:</div>
+                        <div class="ai-item-value">
+                            <div>1. Недостаточное информирование клиентов</div>
+                            <div>2. Отсутствие альтернативных решений</div>
+                            <div>3. Неподготовленность операторов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-clock"></i>
+                    Увеличение времени звонков
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Проблема:</div>
+                        <div class="ai-item-value">Рост среднего времени на 23%</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Коренная причина:</div>
+                        <div class="ai-item-value" style="color: var(--danger-color);">Усложнение продуктовой линейки</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Вторичные причины:</div>
+                        <div class="ai-item-value">
+                            <div>1. Отсутствие быстрых ответов</div>
+                            <div>2. Необходимость консультации с экспертами</div>
+                            <div>3. Технические проблемы с базой знаний</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/problem-detection.js"></script>
+}

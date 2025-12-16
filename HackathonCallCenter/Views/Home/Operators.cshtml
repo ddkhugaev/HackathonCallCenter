@@ -1,0 +1,399 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css">
+    <link rel="stylesheet" href="~/css/charts.css">
+}
+
+<div class="main-content">
+    <div class="header">
+        <div class="header-title">
+            <h1>Управление операторами</h1>
+            <p>Анализ работы и эффективности операторов</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary">
+                <i class="fas fa-user-plus"></i>
+                Добавить оператора
+            </button>
+            <button class="btn btn-primary">
+                <i class="fas fa-chart-line"></i>
+                Отчет по эффективности
+            </button>
+            <div class="user-info">
+                <div class="user-avatar">АИ</div>
+                <div>
+                    <div style="font-weight: 600;">Амридин Назаров</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-color);">Администратор</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика операторов -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #dbeafe; color: var(--primary-color);">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h3>8</h3>
+                <p>Активных операторов</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #d1fae5; color: var(--success-color);">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="stat-info">
+                <h3>92.4%</h3>
+                <p>Средняя успешность</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #fef3c7; color: var(--warning-color);">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+                <h3>4:15</h3>
+                <p>Среднее время звонка</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #fce7f3; color: #db2777;">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-info">
+                <h3>8.6/10</h3>
+                <p>Средняя оценка клиентов</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Список операторов -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Все операторы</div>
+            <div class="card-actions">
+                <input type="text" class="form-control" placeholder="Поиск оператора..." style="width: 200px;">
+                <button class="btn btn-primary">
+                    <i class="fas fa-filter"></i>
+                    Фильтры
+                </button>
+            </div>
+        </div>
+
+        <div class="operators-list">
+            <!-- Оператор 1 -->
+            <div class="operator-item">
+                <div class="operator-avatar" style="background-color: var(--primary-color);">А</div>
+                <div class="operator-info">
+                    <div class="operator-name">Анна Иванова</div>
+                    <div class="operator-phone">+7 927 368 99 93</div>
+                    <div class="operator-stats">
+                        <div class="stat">
+                            <div class="stat-value">94%</div>
+                            <div class="stat-label">Успешность</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">8.7</div>
+                            <div class="stat-label">Удовл.</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">127</div>
+                            <div class="stat-label">Звонков</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">4:18</div>
+                            <div class="stat-label">Ср. время</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-success" style="width: 94%;"></div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn-icon" title="Детальная статистика">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-icon" title="Редактировать">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-icon" title="Назначить звонок">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Оператор 2 -->
+            <div class="operator-item">
+                <div class="operator-avatar" style="background-color: var(--success-color);">Л</div>
+                <div class="operator-info">
+                    <div class="operator-name">Леон Петров</div>
+                    <div class="operator-phone">+963 179 88 77</div>
+                    <div class="operator-stats">
+                        <div class="stat">
+                            <div class="stat-value">87%</div>
+                            <div class="stat-label">Успешность</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">7.9</div>
+                            <div class="stat-label">Удовл.</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">98</div>
+                            <div class="stat-label">Звонков</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">7:02</div>
+                            <div class="stat-label">Ср. время</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-warning" style="width: 87%;"></div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn-icon" title="Детальная статистика">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-icon" title="Редактировать">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-icon" title="Назначить звонок">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Оператор 3 -->
+            <div class="operator-item">
+                <div class="operator-avatar" style="background-color: #8b5cf6;">М</div>
+                <div class="operator-info">
+                    <div class="operator-name">Мария Сидорова</div>
+                    <div class="operator-phone">+7 916 123 45 67</div>
+                    <div class="operator-stats">
+                        <div class="stat">
+                            <div class="stat-value">91%</div>
+                            <div class="stat-label">Успешность</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">8.5</div>
+                            <div class="stat-label">Удовл.</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">112</div>
+                            <div class="stat-label">Звонков</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">3:45</div>
+                            <div class="stat-label">Ср. время</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-success" style="width: 91%;"></div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn-icon" title="Детальная статистика">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-icon" title="Редактировать">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-icon" title="Назначить звонок">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Оператор 4 -->
+            <div class="operator-item">
+                <div class="operator-avatar" style="background-color: var(--warning-color);">И</div>
+                <div class="operator-info">
+                    <div class="operator-name">Иван Кузнецов</div>
+                    <div class="operator-phone">+7 925 987 65 43</div>
+                    <div class="operator-stats">
+                        <div class="stat">
+                            <div class="stat-value">83%</div>
+                            <div class="stat-label">Успешность</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">7.8</div>
+                            <div class="stat-label">Удовл.</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">89</div>
+                            <div class="stat-label">Звонков</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5:32</div>
+                            <div class="stat-label">Ср. время</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-warning" style="width: 83%;"></div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn-icon" title="Детальная статистика">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-icon" title="Редактировать">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-icon" title="Назначить звонок">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Оператор 5 -->
+            <div class="operator-item">
+                <div class="operator-avatar" style="background-color: #ec4899;">О</div>
+                <div class="operator-info">
+                    <div class="operator-name">Ольга Смирнова</div>
+                    <div class="operator-phone">+7 903 456 78 90</div>
+                    <div class="operator-stats">
+                        <div class="stat">
+                            <div class="stat-value">89%</div>
+                            <div class="stat-label">Успешность</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">8.2</div>
+                            <div class="stat-label">Удовл.</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">105</div>
+                            <div class="stat-label">Звонков</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">3:45</div>
+                            <div class="stat-label">Ср. время</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-success" style="width: 89%;"></div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn-icon" title="Детальная статистика">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-icon" title="Редактировать">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-icon" title="Назначить звонок">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Графики эффективности операторов -->
+    <div class="charts-grid">
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Рейтинг операторов по успешности сделок</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="operatorsSuccessChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Средняя длительность звонков по операторам</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="operatorsDurationChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI рекомендации для операторов -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <i class="fas fa-robot" style="color: var(--primary-color); margin-right: 10px;"></i>
+                AI рекомендации для улучшения работы операторов
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-user-circle"></i>
+                    Для Анны Ивановой
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Сильная сторона:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Активное слушание</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Что улучшить:</div>
+                        <div class="ai-item-value" style="color: var(--warning-color);">Скорость обработки</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Рекомендация:</div>
+                        <div class="ai-item-value">Использовать шаблоны ответов для частых вопросов</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-user-circle"></i>
+                    Для Леона Петрова
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Сильная сторона:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Технические знания</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Что улучшить:</div>
+                        <div class="ai-item-value" style="color: var(--warning-color);">Эмпатия к клиентам</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Рекомендация:</div>
+                        <div class="ai-item-value">Пройти тренинг по клиентоориентированности</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-user-circle"></i>
+                    Для Ивана Кузнецова
+                </div>
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Сильная сторона:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Уверенность в голосе</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Что улучшить:</div>
+                        <div class="ai-item-value" style="color: var(--warning-color);">Работа с возражениями</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Рекомендация:</div>
+                        <div class="ai-item-value">Изучить техники продаж и убеждения</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/operators.js"></script>
+}

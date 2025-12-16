@@ -1,32 +1,55 @@
-using System.Diagnostics;
-using HackathonCallCenter.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HackathonCallCenter.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
+            ViewData["Title"] = "Главная";
             return View();
         }
 
+        public IActionResult Calls()
+        {
+            ViewData["Title"] = "Звонки";
+            return View();
+        }
+
+        public IActionResult Operators()
+        {
+            ViewData["Title"] = "Операторы";
+            return View();
+        }
+
+        public IActionResult Analytics()
+        {
+            ViewData["Title"] = "Аналитика";
+            return View();
+        }
+
+        public IActionResult AiAnalysis()
+        {
+            ViewData["Title"] = "Анализ эмоций";
+            return View();
+        }
+
+        public IActionResult Recommendations()
+        {
+            ViewData["Title"] = "Рекомендации";
+            return View();
+        }
+
+        public IActionResult ProblemDetection()
+        {
+            ViewData["Title"] = "Выявление проблем";
+            return View();
+        }
+
+        // Оставьте этот метод, если нужна страница Privacy
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
