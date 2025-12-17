@@ -54,7 +54,6 @@ namespace HackathonCallCenter.Controllers
         {
             ViewData["Title"] = "Анализ разговора";
 
-            // Можно передать данные через ViewBag или ViewData
             ViewData["CallId"] = "#2457";
             ViewData["PhoneNumber"] = "+7 927 368 99 93";
             ViewData["OperatorName"] = "Анна Иванова";
