@@ -1,4 +1,5 @@
-﻿@model Call
+﻿@using Hackathon.Db.Models
+@model Call
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -101,6 +102,7 @@
 
                 <div class="transcript-container">
                     <div class="dialogue">
+                        <div class="message-text">@Model.TranscriptionText </div>
                         @* <!-- Сообщение оператора -->
                         <div class="message message-operator">
                             <div class="message-avatar avatar-operator">О</div>
@@ -216,6 +218,7 @@
                 </div>
 
                 <div class="calls-list">
+                    <div class="message-text">@Model.PersonalData </div>
                     @* <div class="call-item active">
                         <div class="call-icon incoming">
                             <i class="fas fa-phone-alt"></i>
@@ -283,15 +286,15 @@
                 <div class="ai-list">
                     <div class="ai-item">
                         <div class="ai-item-label">Достижение цели звонка</div>
-                        <div class="ai-item-value text-primary" style="color: var(--success-color);">@Model.GoalAchievement</div>
+                        <div class="ai-item-value text-primary" style="color: #2563eb;">@Model.GoalAchievement</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">Наличие конфликта</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">@(Model.HasConflict ? "Есть" : "Отсутствует")</div>
+                        <div class="ai-item-value" style="color: #2563eb;">@(Model.HasConflict ? "Есть" : "Отсутствует")</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">Качество работы оператора:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">@Model.OperatorQuality</div>
+                        <div class="ai-item-value" style="color: #2563eb;">@Model.OperatorQuality</div>
                     </div>
                     @* <div class="ai-item">
                         <div class="ai-item-label">Выявленные ключевые слова:</div>
@@ -301,7 +304,7 @@
                     </div> *@
                     <div class="ai-item">
                         <div class="ai-item-label">Соблюдение скрипта диалога:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ScriptCompliance</div>
+                        <div class="ai-item-value" style="color: #2563eb;">@Model.ScriptCompliance</div>
                     </div>
                 </div>
             </div>
@@ -316,19 +319,19 @@
                 <div class="ai-list">
                     <div class="ai-item">
                         <div class="ai-item-label">1. Скорость ответа:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ResponseSpeed</div>
+                        <div class="ai-item-value" style="color: #2563eb;">@Model.ResponseSpeed</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">2. Грамотность речи:</div>
-                        <div class="ai-item-value" style="color: var(--warning-color);">@Model.SpeechGrammar</div>
+                        <div class="ai-item-value" style="color: #2563eb;">@Model.SpeechGrammar</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">3. Активное слушание:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ActiveListening</div>
+                        <div class="ai-item-value" style="color: #2563eb;">@Model.ActiveListening</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">4. Решение проблемы:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ProblemSolving</div>
+                        <div class="ai-item-value" style="color: #2563eb;">@Model.ProblemSolving</div>
                     </div>
                 </div>
 
