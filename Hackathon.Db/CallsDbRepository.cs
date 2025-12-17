@@ -35,7 +35,7 @@ namespace Hackathon.Db
 
         public async Task<Call?> TryGetByIdAsync(int id)
         {
-            return await databaseContext.Calls.FirstOrDefaultAsync(call => call.Id == id);
+            return await databaseContext.Calls.Include(c => c.Agent).FirstOrDefaultAsync(call => call.Id == id);
         }
     }
 }

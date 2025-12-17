@@ -271,7 +271,7 @@
             <p>Загрузите аудиофайл для детального AI-анализа</p>
         </div>
         <div class="header-actions">
-            <a asp-controller="Home" asp-action="AiAnalysis" class="btn btn-secondary">
+            <a asp-controller="Home" asp-action="Calls" class="btn btn-secondary">
                 <i class="fas fa-history"></i>
                 История анализов
             </a>
@@ -299,7 +299,7 @@
                 </p>
             </div>
 
-            <form id="audioAnalysisForm" method="post" action="@Url.Action("AiAnalysis", "Home")">
+            <form  method="post" action="@Url.Action("AddCall", "Home")">
                 <!-- Поле для ссылки на аудио -->
                 <div class="form-group">
                     <label class="form-label" for="audioUrl">
@@ -310,7 +310,7 @@
                         <input type="url"
                                class="form-control-custom"
                                id="audioUrl"
-                               name="audioUrl"
+                               name="url"
                                placeholder=""
                                required
                                value="">
@@ -344,7 +344,7 @@
                         <input type="text"
                                class="form-control-custom"
                                id="operatorName"
-                               name="operatorName"
+                               name="fullName"
                                placeholder="Например: Анна Иванова"
                                required
                                value="">
@@ -362,7 +362,7 @@
                 </div>
 
                 <!-- Кнопка анализа -->
-                <button type="submit" class="btn-analyze" id="analyzeBtn">
+                <button type="submit" class="btn-analyze" >
                     <i class="fas fa-robot"></i>
                     Запустить AI-анализ
                 </button>
@@ -513,7 +513,7 @@
                         localStorage.setItem('callAnalysisData', JSON.stringify(analysisData));
 
                         // Перенаправляем на страницу анализа эмоций
-                        window.location.href = '@Url.Action("AiAnalysis", "Home")';
+                        window.location.href = '@Url.Action("AddCall", "Home")';
                     }
                 }, 50);
             });

@@ -13,10 +13,10 @@
             });
             
             // Обработка кнопки AI-анализ
-            const aiAnalysisBtn = document.querySelector('.btn-primary');
-            aiAnalysisBtn.addEventListener('click', function() {
-                alert('Запущен AI-анализ выбранного звонка. Результаты будут обновлены в правой панели.');
-            });
+            //const aiAnalysisBtn = document.querySelector('.btn-primary');
+            //aiAnalysisBtn.addEventListener('click', function() {
+            //    alert('Запущен AI-анализ выбранного звонка. Результаты будут обновлены в правой панели.');
+            //});
             
             // Обработка кнопки загрузки звонка
             const uploadBtn = document.querySelector('.btn-secondary');

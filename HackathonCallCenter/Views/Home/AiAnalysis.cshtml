@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Call
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,10 +22,10 @@
                 <i class="fas fa-upload"></i>
                 Загрузить звонок
             </button>
-            <button class="btn btn-primary">
+            <a href="/Home/CallAnalysis" class="btn btn-primary">
                 <i class="fas fa-plus"></i>
                 Новый анализ
-            </button>
+            </a>
             <div class="user-info">
                 <div class="user-avatar">АИ</div>
                 <div>
@@ -113,7 +114,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <!-- Сообщение клиента -->
                         <div class="message message-client">
                             <div class="message-avatar avatar-client">К</div>
@@ -208,7 +209,7 @@
             <div class="card">
                 <div class="card-header">
                     @* <div class="card-title">Недавние звонки</div> *@
-                    <div class="card-title">Личная информация</div>
+                    <div class="card-title">Переданная личная информация</div>
                     @* <div class="card-actions">
                         <button class="btn btn-secondary">Все звонки</button>
                     </div> *@
@@ -282,25 +283,25 @@
                 <div class="ai-list">
                     <div class="ai-item">
                         <div class="ai-item-label">Достижение цели звонка</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Высокая (92%)</div>
+                        <div class="ai-item-value text-primary" style="color: var(--success-color);">@Model.GoalAchievement</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">Наличие конфликта</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Отсутствует</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">@(Model.HasConflict ? "Есть" : "Отсутствует")</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">Качество работы оператора:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Отличное</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">@Model.OperatorQuality</div>
                     </div>
-                    <div class="ai-item">
+                    @* <div class="ai-item">
                         <div class="ai-item-label">Выявленные ключевые слова:</div>
                         <div class="ai-item-value">
-                            <div class="ai-item-value" style="color: var(--success-color);">работает отлично, предложение</div>
+                            <div class="ai-item-value" style="color: var(--success-color);">@Model.K</div>
                         </div>
-                    </div>
+                    </div> *@
                     <div class="ai-item">
                         <div class="ai-item-label">Соблюдение скрипта диалога:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Отличное</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ScriptCompliance</div>
                     </div>
                 </div>
             </div>
@@ -315,19 +316,19 @@
                 <div class="ai-list">
                     <div class="ai-item">
                         <div class="ai-item-label">1. Скорость ответа:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Хорошая</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ResponseSpeed</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">2. Грамотность речи:</div>
-                        <div class="ai-item-value" style="color: var(--warning-color);">Хорошая</div>
+                        <div class="ai-item-value" style="color: var(--warning-color);">@Model.SpeechGrammar</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">3. Активное слушание:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Отличное</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ActiveListening</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">4. Решение проблемы:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Полное</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">@Model.ProblemSolving</div>
                     </div>
                 </div>
 
@@ -350,7 +351,7 @@
                     <div class="operator-item">
                         <div class="operator-avatar" style="background-color: var(--primary-color);">А</div>
                         <div class="operator-info">
-                            <div class="operator-name">Анна Лебедева</div>
+                            <div class="operator-name">@Model?.Agent?.FullName</div>
 @*                             <div class="operator-phone">+7 927 368 99 93</div>
                             <div class="operator-stats">
                                 <div class="stat">

@@ -47,12 +47,12 @@ function initButtons() {
     }
     
     // Кнопка нового анализа
-    const newAnalysisBtn = document.querySelector('.btn-new-analysis');
-    if (newAnalysisBtn) {
-        newAnalysisBtn.addEventListener('click', function() {
-            showNotification('Новый анализ', 'Создан новый анализ звонков', 'info');
-        });
-    }
+    //const newAnalysisBtn = document.querySelector('.btn-new-analysis');
+    //if (newAnalysisBtn) {
+    //    newAnalysisBtn.addEventListener('click', function() {
+    //        showNotification('Новый анализ', 'Создан новый анализ звонков', 'info');
+    //    });
+    //}
 }
 
 // Инициализация выпадающих меню

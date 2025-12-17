@@ -51,9 +51,9 @@ namespace HackathonCallCenter.Controllers
         }
 
         // Анализ эмоций для конкретного звонка
-        public async Task<IActionResult> AiAnalysis(int id)
+        public async Task<IActionResult> AiAnalysis(int id = 1)
         {
-            ViewData["Title"] = "Анализ эмоций";
+            ViewData["Title"] = "Анализ звонка";
             var call = await callsRepository.TryGetByIdAsync(id);
             return View(call);
         }
