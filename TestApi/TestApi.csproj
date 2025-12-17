@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hackathon.Ai\Hackathon.Ai.csproj" />
+    <ProjectReference Include="..\HackathonCallCenter\HackathonCallCenter.csproj" />
   </ItemGroup>
 
 </Project>

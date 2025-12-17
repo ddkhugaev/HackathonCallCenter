@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hackathon.Ai\Hackathon.Ai.csproj" />
     <ProjectReference Include="..\Hackathon.Db\Hackathon.Db.csproj" />
   </ItemGroup>
 
