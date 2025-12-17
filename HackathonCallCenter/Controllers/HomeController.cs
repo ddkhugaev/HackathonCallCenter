@@ -8,9 +8,6 @@ namespace HackathonCallCenter.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-
         public IActionResult Index()
         {
             ViewData["Title"] = "Главная";
@@ -53,10 +50,6 @@ namespace HackathonCallCenter.Controllers
             return View();
         }
 
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
         public IActionResult CallAnalysis()
         {
             ViewData["Title"] = "Анализ разговора";
@@ -70,8 +63,6 @@ namespace HackathonCallCenter.Controllers
 
             return View();
         }
-
-
 
         public IActionResult Privacy()
         {
