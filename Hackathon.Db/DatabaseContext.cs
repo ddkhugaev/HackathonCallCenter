@@ -12,6 +12,14 @@ namespace Hackathon.Db
         {
             Database.EnsureCreated();
         }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Agent>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id)
+                      .ValueGeneratedOnAdd(); // Убедитесь, что Id автоинкрементируется
+            });
+        }
     }
 }

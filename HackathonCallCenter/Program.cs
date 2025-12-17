@@ -12,6 +12,12 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlite(conn
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// добавление репозитория звонков
+builder.Services.AddTransient<ICallsRepository, CallsDbRepository>();
+
+// добавление репозитория операторов
+builder.Services.AddTransient<IAgentsRepository, AgentsDbRepository>();
+
 // добавления сервиса анализатора
 builder.Services.AddSingleton<Analyzer>();
 
