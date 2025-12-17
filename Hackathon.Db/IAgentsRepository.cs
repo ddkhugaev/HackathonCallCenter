@@ -13,5 +13,6 @@ namespace Hackathon.Db
         Task<List<Agent>> GetAllAsync();
         Task RemoveAsync(Agent agent);
         Task<Agent?> TryGetByIdAsync(int id);
+        Task<Agent?> TryGetByFullNameAsync(string fullName);
     }
 }

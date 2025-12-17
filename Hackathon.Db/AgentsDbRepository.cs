@@ -37,5 +37,10 @@ namespace Hackathon.Db
         {
             return await databaseContext.Agents.FirstOrDefaultAsync(agent => agent.Id == id);
         }
+
+        public async Task<Agent?> TryGetByFullNameAsync(string fullName)
+        {
+            return await databaseContext.Agents.FirstOrDefaultAsync(agent => agent.FullName == fullName);
+        }
     }
 }
