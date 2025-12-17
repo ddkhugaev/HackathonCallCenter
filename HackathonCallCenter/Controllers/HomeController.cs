@@ -56,7 +56,7 @@ namespace HackathonCallCenter.Controllers
 
         public IActionResult AiAnalysis()
         {
-            ViewData["Title"] = "Анализ эмоций";
+            ViewData["Title"] = "Анализ звонка";
             return View();
         }
 
