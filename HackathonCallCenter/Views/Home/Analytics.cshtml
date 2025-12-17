@@ -1,0 +1,141 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/charts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+}
+
+<div class="main-content" style="width: 1597px;">
+    <div class="header">
+        <div class="header-title">
+            <h1>Аналитика звонков</h1>
+            <p>Детальная аналитика и отчеты по звонкам</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary">
+                <i class="fas fa-download"></i>
+                Экспорт отчетов
+            </button>
+            <button class="btn btn-primary">
+                <i class="fas fa-filter"></i>
+                Фильтры
+            </button>
+            <div class="user-info">
+                <div class="user-avatar">АИ</div>
+                <div>
+                    <div style="font-weight: 600;">Амридин Назаров</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-color);">Администратор</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Фильтры -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Параметры анализа</div>
+        </div>
+        <div class="chart-filters">
+            <button class="filter-btn active">За последнюю неделю</button>
+            <button class="filter-btn">За последний месяц</button>
+            <button class="filter-btn">За последний квартал</button>
+            <button class="filter-btn">За год</button>
+            <button class="filter-btn">Все время</button>
+        </div>
+    </div>
+
+    <!-- Графики аналитики -->
+    <div class="charts-grid">
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Распределение звонков по времени суток</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="timeDistributionChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Длительность звонков</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="durationChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Типы обращений клиентов</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="requestTypesChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="card-header">
+                <div class="card-title">Эффективность разных сценариев разговора</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="scenariosChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Детальная статистика -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Ключевые показатели эффективности (KPI)</div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #dbeafe; color: var(--primary-color);">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>94%</h3>
+                    <p>Достижение целей звонка</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #d1fae5; color: var(--success-color);">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>+12%</h3>
+                    <p>Рост конверсии за месяц</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #fef3c7; color: var(--warning-color);">
+                    <i class="fas fa-stopwatch"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>2:15</h3>
+                    <p>Среднее время решения проблемы</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #fce7f3; color: #db2777;">
+                    <i class="fas fa-redo"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>8%</h3>
+                    <p>Повторные обращения по одной проблеме</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/analytics.js"></script>
+}

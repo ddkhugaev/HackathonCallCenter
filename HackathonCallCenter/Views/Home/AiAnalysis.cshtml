@@ -1,0 +1,409 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css">
+    <link rel="stylesheet" href="~/css/charts.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+}
+
+<div class="main-content">
+    <div class="header">
+        <div class="header-title">
+            <h1>Дашборд речевой аналитики</h1>
+            <p>Анализ звонков и взаимодействий с клиентами</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary">
+                <i class="fas fa-upload"></i>
+                Загрузить звонок
+            </button>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Новый анализ
+            </button>
+            <div class="user-info">
+                <div class="user-avatar">АИ</div>
+                <div>
+                    <div style="font-weight: 600;">Амридин Назаров</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-color);">Администратор</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon call">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="stat-info">
+                <h3>1,247</h3>
+                <p>Всего звонков</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+                <h3>89%</h3>
+                <p>Успешных сделок</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon duration">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+                <h3>4:32</h3>
+                <p>Средняя длительность</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon satisfaction">
+                <i class="fas fa-smile"></i>
+            </div>
+            <div class="stat-info">
+                <h3>8.2/10</h3>
+                <p>Удовлетворенность клиентов</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="content-grid">
+        <!-- Левая колонка -->
+        <div>
+            <!-- Транскрипция звонка -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Транскрипция диалога</div>
+                    <div class="card-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Скачать
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-robot"></i>
+                            AI-анализ
+                        </button>
+                    </div>
+                </div>
+
+                <div class="transcript-container">
+                    <div class="dialogue">
+                        <!-- Сообщение оператора -->
+                        <div class="message message-operator">
+                            <div class="message-avatar avatar-operator">О</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <div class="message-sender">Оператор: Анна</div>
+                                    <div class="message-time">00:32</div>
+                                </div>
+                                <div class="message-text">
+                                    Здравствуйте! Компания «Голосовые технологии», меня зовут Анна. Чем могу помочь?
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Сообщение клиента -->
+                        <div class="message message-client">
+                            <div class="message-avatar avatar-client">К</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <div class="message-sender">Клиент: +7 927 368 99 93</div>
+                                    <div class="message-time">00:45</div>
+                                </div>
+                                <div class="message-text">
+                                    Добрый день! Меня интересует ваша система анализа звонков. Можно узнать подробнее о возможностях?
+                                </div>
+                                <div class="sentiment sentiment-positive">Настроение: позитивное</div>
+                            </div>
+                        </div>
+
+                        <!-- Сообщение оператора -->
+                        <div class="message message-operator">
+                            <div class="message-avatar avatar-operator">О</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <div class="message-sender">Оператор: Анна</div>
+                                    <div class="message-time">01:10</div>
+                                </div>
+                                <div class="message-text">
+                                    Конечно! Наша система автоматически транскрибирует звонки, анализирует эмоции клиентов, выявляет частые вопросы и помогает улучшить качество обслуживания.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Сообщение клиента -->
+                        <div class="message message-client">
+                            <div class="message-avatar avatar-client">К</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <div class="message-sender">Клиент: +7 927 368 99 93</div>
+                                    <div class="message-time">02:05</div>
+                                </div>
+                                <div class="message-text">
+                                    Интересно! А есть ли возможность анализировать не только текст, но и интонации? И как быстро происходит обработка?
+                                </div>
+                                <div class="sentiment sentiment-neutral">Настроение: нейтральное</div>
+                            </div>
+                        </div>
+
+                        <!-- Сообщение оператора -->
+                        <div class="message message-operator">
+                            <div class="message-avatar avatar-operator">О</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <div class="message-sender">Оператор: Анна</div>
+                                    <div class="message-time">02:30</div>
+                                </div>
+                                <div class="message-text">
+                                    Да, мы анализируем и интонации тоже! Это помогает определить уровень удовлетворенности клиента. Обработка происходит в реальном времени или сразу после завершения звонка.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Сообщение клиента -->
+                        <div class="message message-client">
+                            <div class="message-avatar avatar-client">К</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <div class="message-sender">Клиент: +7 927 368 99 93</div>
+                                    <div class="message-time">03:15</div>
+                                </div>
+                                <div class="message-text">
+                                    Отлично! Можете прислать коммерческое предложение? Наша компания как раз ищет подобное решение.
+                                </div>
+                                <div class="sentiment sentiment-positive">Настроение: позитивное</div>
+                            </div>
+                        </div>
+
+                        <!-- Сообщение оператора -->
+                        <div class="message message-operator">
+                            <div class="message-avatar avatar-operator">О</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <div class="message-sender">Оператор: Анна</div>
+                                    <div class="message-time">03:40</div>
+                                </div>
+                                <div class="message-text">
+                                    Конечно! Оставьте, пожалуйста, ваш email, и я отправлю все материалы в течение 15 минут. Также можем организовать демонстрацию системы.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Список звонков -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Недавние звонки</div>
+                    <div class="card-actions">
+                        <button class="btn btn-secondary">Все звонки</button>
+                    </div>
+                </div>
+
+                <div class="calls-list">
+                    <div class="call-item active">
+                        <div class="call-icon incoming">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="call-info">
+                            <div class="call-number">+7 927 368 99 93</div>
+                            <div class="call-meta">
+                                <span>Сегодня, 10:24</span>
+                                <span>4 мин 18 сек</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="call-item">
+                        <div class="call-icon outgoing">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="call-info">
+                            <div class="call-number">+963 179 88 77</div>
+                            <div class="call-meta">
+                                <span>Вчера, 16:42</span>
+                                <span>7 мин 02 сек</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="call-item">
+                        <div class="call-icon incoming">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="call-info">
+                            <div class="call-number">+7 910 555 43 21</div>
+                            <div class="call-meta">
+                                <span>Вчера, 14:15</span>
+                                <span>2 мин 50 сек</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="call-item">
+                        <div class="call-icon missed">
+                            <i class="fas fa-phone-slash"></i>
+                        </div>
+                        <div class="call-info">
+                            <div class="call-number">+7 495 123 45 67</div>
+                            <div class="call-meta">
+                                <span>Позавчера, 11:30</span>
+                                <span>Пропущенный</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка -->
+        <div class="ai-features">
+            <!-- AI-анализ -->
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-robot ai-icon"></i>
+                    AI-анализ звонка
+                </div>
+
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">Успешность сделки:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Высокая (92%)</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Настроение клиента:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Позитивное</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Качество работы оператора:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Отличное</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Выявленные ключевые слова:</div>
+                        <div class="ai-item-value">
+                            <div>
+                                <span class="tag">анализ звонков</span>
+                                <span class="tag">коммерческое предложение</span>
+                                <span class="tag">система</span>
+                                <span class="tag">интонации</span>
+                                <span class="tag">обработка</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Рекомендации AI -->
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-lightbulb ai-icon"></i>
+                    Рекомендации AI для оператора
+                </div>
+
+                <div class="ai-list">
+                    <div class="ai-item">
+                        <div class="ai-item-label">1. Скорость ответа:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Хорошая</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">2. Упоминание продукта:</div>
+                        <div class="ai-item-value" style="color: var(--warning-color);">Можно добавить</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">3. Активное слушание:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Отличное</div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">4. Решение проблемы:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Полное</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem; padding: 1rem; background-color: #f0f9ff; border-radius: 8px;">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Совет от AI:</div>
+                    <div style="font-size: 0.9rem;">
+                        Можно предложить клиенту запланировать демонстрацию системы на конкретное время для увеличения конверсии.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Анализ операторов -->
+            <div class="ai-card">
+                <div class="ai-title">
+                    <i class="fas fa-user-friends ai-icon"></i>
+                    Операторы
+                </div>
+
+                <div class="operators-list">
+                    <div class="operator-item">
+                        <div class="operator-avatar" style="background-color: var(--primary-color);">А</div>
+                        <div class="operator-info">
+                            <div class="operator-name">Анна</div>
+                            <div class="operator-phone">+7 927 368 99 93</div>
+                            <div class="operator-stats">
+                                <div class="stat">
+                                    <div class="stat-value">94%</div>
+                                    <div class="stat-label">Успешность</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">8.7</div>
+                                    <div class="stat-label">Удовл.</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">127</div>
+                                    <div class="stat-label">Звонков</div>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-success" style="width: 94%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="operator-item">
+                        <div class="operator-avatar" style="background-color: var(--success-color);">Л</div>
+                        <div class="operator-info">
+                            <div class="operator-name">Леон</div>
+                            <div class="operator-phone">+963 179 88 77</div>
+                            <div class="operator-stats">
+                                <div class="stat">
+                                    <div class="stat-value">87%</div>
+                                    <div class="stat-label">Успешность</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">7.9</div>
+                                    <div class="stat-label">Удовл.</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">98</div>
+                                    <div class="stat-label">Звонков</div>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-warning" style="width: 87%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/ai-analysis.js"></script>
+    <script src="~/js/charts.js"></script>
+}
