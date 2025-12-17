@@ -46,10 +46,9 @@ namespace HackathonCallCenter.Controllers
             return View();
         }
 
-        // Оставьте этот метод, если нужна страница Privacy
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
     }
 }
