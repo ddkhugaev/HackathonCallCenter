@@ -50,5 +50,19 @@ namespace HackathonCallCenter.Controllers
         //{
         //    return View();
         //}
+        public IActionResult CallAnalysis()
+        {
+            ViewData["Title"] = "Анализ разговора";
+
+            // Можно передать данные через ViewBag или ViewData
+            ViewData["CallId"] = "#2457";
+            ViewData["PhoneNumber"] = "+7 927 368 99 93";
+            ViewData["OperatorName"] = "Анна Иванова";
+            ViewData["CallDate"] = "Сегодня, 10:24";
+            ViewData["Duration"] = "4:18";
+            ViewData["Status"] = "Успешный";
+
+            return View();
+        }
     }
 }

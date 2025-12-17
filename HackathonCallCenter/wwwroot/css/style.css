@@ -404,3 +404,67 @@ body {
 .data-table tr:hover {
     background-color: #f8fafc;
 }
+
+
+
+
+/* call-analysis.css */
+.operator-avatar-large {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.data-item {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+    .data-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+.data-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.data-value {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.tag-success {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.tag-warning {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+.tag-info {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+}
