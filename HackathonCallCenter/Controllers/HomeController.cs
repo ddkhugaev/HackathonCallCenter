@@ -1,9 +1,16 @@
+using Hackathon.Db;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using HackathonCallCenter.Models;
 
 namespace HackathonCallCenter.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+
+
         public IActionResult Index()
         {
             ViewData["Title"] = "Главная";
@@ -62,6 +69,19 @@ namespace HackathonCallCenter.Controllers
             ViewData["Status"] = "Успешный";
 
             return View();
+        }
+
+
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
