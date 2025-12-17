@@ -33,7 +33,7 @@ namespace Hackathon.Db
             await databaseContext.SaveChangesAsync();
         }
 
-        public async Task<Agent?> TryGetByIdAsync(int id)
+        public async Task<Agent?> TryGetByIdAsync(Guid id)
         {
             return await databaseContext.Agents.FirstOrDefaultAsync(agent => agent.Id == id);
         }

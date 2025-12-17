@@ -10,7 +10,7 @@ namespace Hackathon.Db.Models
     {
         public int Id { get; set; }
 
-        public int AgentId { get; set; }
+        public Guid AgentId { get; set; }
         public Agent? Agent { get; set; }
 
         public string AudioFileUrl { get; set; } = null!;
