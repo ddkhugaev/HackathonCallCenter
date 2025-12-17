@@ -1,8 +1,4 @@
-using Hackathon.Db;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using HackathonCallCenter.Models;
 
 namespace HackathonCallCenter.Controllers
 {
@@ -50,6 +46,10 @@ namespace HackathonCallCenter.Controllers
             return View();
         }
 
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
         public IActionResult CallAnalysis()
         {
             ViewData["Title"] = "Анализ разговора";
@@ -62,17 +62,6 @@ namespace HackathonCallCenter.Controllers
             ViewData["Status"] = "Успешный";
 
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
