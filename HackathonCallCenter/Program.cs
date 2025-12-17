@@ -1,4 +1,5 @@
 using Hackathon.Db;
+using HackathonCallCenter.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,9 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlite(conn
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// добавления сервиса анализатора
+builder.Services.AddSingleton<Analyzer>();
 
 var app = builder.Build();
 
