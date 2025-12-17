@@ -1,0 +1,492 @@
+﻿@{
+    ViewData["Title"] = "Анализ разговора";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css">
+    <link rel="stylesheet" href="~/css/charts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .call-analysis-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .call-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .detail-item {
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 6px;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .transcript-section {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .personal-data-card {
+            background: linear-gradient(8deg, #3b82f61a 0%, #3b82f614 100%);
+            color: #151c28d6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+}
+
+<div class="main-content">
+    <!-- Хедер -->
+    <div class="header">
+        <div class="header-title">
+            <h1>Детальный анализ разговора</h1>
+            <p>Полная аналитика конкретного звонка</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary">
+                <i class="fas fa-upload"></i>
+                Загрузить звонок
+            </button>
+            <button class="btn btn-secondary">
+                <i class="fas fa-download"></i>
+                Экспорт отчета
+            </button>
+            <button class="btn btn-primary">
+                <i class="fas fa-share"></i>
+                Поделиться
+            </button>
+            <div class="user-info">
+                <div class="user-avatar">АИ</div>
+                <div>
+                    <div style="font-weight: 600;">Амридин Назаров</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-color);">Администратор</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Информация о звонке -->
+    <div class="info-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="margin: 0;">Звонок #2457</h3>
+            <span class="badge badge-success">Успешный</span>
+        </div>
+
+        <div class="call-details">
+            <div class="detail-item">
+                <div class="detail-label">Номер телефона</div>
+                <div class="detail-value">+7 927 368 99 93</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Оператор</div>
+                <div class="detail-value">Анна Иванова</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Дата и время</div>
+                <div class="detail-value">Сегодня, 10:24</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Длительность</div>
+                <div class="detail-value">4 минуты 18 секунд</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Тип звонка</div>
+                <div class="detail-value"><span class="badge badge-incoming">Входящий</span></div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Тема</div>
+                <div class="detail-value">Интерес к системе аналитики</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="call-analysis-grid">
+        <!-- Левая колонка -->
+        <div>
+            <!-- Транскрипция диалога (из анализа эмоций) -->
+            <div class="transcript-section">
+                <div class="card-header" style="margin-bottom: 1rem;">
+                    <div class="card-title">
+                        <i class="fas fa-comments"></i>
+                        Транскрипция диалога
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-secondary btn-sm">
+                            <i class="fas fa-play"></i>
+                            Прослушать
+                        </button>
+                    </div>
+                </div>
+
+                <div class="dialogue">
+                    <div class="message message-operator">
+                        <div class="message-avatar avatar-operator">А</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">Оператор: Анна</div>
+                                <div class="message-time">00:32</div>
+                            </div>
+                            <div class="message-text">
+                                Здравствуйте! Компания «Голосовые технологии», меня зовут Анна. Чем могу помочь?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message message-client">
+                        <div class="message-avatar avatar-client">К</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">Клиент</div>
+                                <div class="message-time">00:45</div>
+                            </div>
+                            <div class="message-text">
+                                Добрый день! Меня интересует ваша система анализа звонков. Можно узнать подробнее о возможностях?
+                            </div>
+                            <div class="sentiment sentiment-positive">
+                                <i class="fas fa-smile"></i> Настроение: позитивное
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message message-operator">
+                        <div class="message-avatar avatar-operator">А</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">Оператор: Анна</div>
+                                <div class="message-time">01:10</div>
+                            </div>
+                            <div class="message-text">
+                                Конечно! Наша система автоматически транскрибирует звонки, анализирует эмоции клиентов, выявляет частые вопросы и помогает улучшить качество обслуживания.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message message-client">
+                        <div class="message-avatar avatar-client">К</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">Клиент</div>
+                                <div class="message-time">02:05</div>
+                            </div>
+                            <div class="message-text">
+                                Интересно! А есть ли возможность анализировать не только текст, но и интонации?
+                            </div>
+                            <div class="sentiment sentiment-neutral">
+                                <i class="fas fa-meh"></i> Настроение: нейтральное
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Успешность и удовлетворенность -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="card-header">
+                        <div class="card-title">Успешность звонка</div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="callSuccessChart" style="margin-left: 60px;"></canvas>
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">92%</div>
+                        <div style="color: var(--gray-color);">Вероятность успешной сделки</div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="card-header">
+                        <div class="card-title">Удовлетворенность клиента</div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="satisfactionChart"></canvas>
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">8.7/10</div>
+                        <div style="color: var(--gray-color);">Оценка клиента</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Типы обращения клиентов (из аналитики) -->
+            <div class="chart-card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <div class="card-title">Тип обращения клиента</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="requestTypeChart" style="margin-left: 300px;"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #3b82f6;"></div>
+                        <span>Консультация</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #10b981;"></div>
+                        <span>Покупка</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #f59e0b;"></div>
+                        <span>Поддержка</span>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <!-- Правая колонка -->
+        <div>
+            <!-- Личные данные из разговора -->
+            <div class="personal-data-card" style="margin-bottom: 24px;">
+                <div class="card-header" style="margin-bottom: 1rem; color: white;">
+                    <div class="card-title">
+                        <i class="fas fa-user-shield"></i>
+                        Извлеченные данные из разговора
+                    </div>
+                </div>
+
+                <div style="display: grid; gap: 1rem;">
+                    <div class="data-item">
+                        <div class="data-label">
+                            <i class="fas fa-building"></i> Компания клиента
+                        </div>
+                        <div class="data-value">ТехноИнновации</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">
+                            <i class="fas fa-briefcase"></i> Должность
+                        </div>
+                        <div class="data-value">Менеджер по IT</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">
+                            <i class="fas fa-tags"></i> Интересующий продукт
+                        </div>
+                        <div class="data-value">VoiceAnalytics Enterprise</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">
+                            <i class="fas fa-calendar"></i> Сроки внедрения
+                        </div>
+                        <div class="data-value">В течение месяца</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">
+                            <i class="fas fa-money-bill-wave"></i> Бюджет
+                        </div>
+                        <div class="data-value">~ 150 000 руб.</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">
+                            <i class="fas fa-star"></i> Приоритет
+                        </div>
+                        <div class="data-value">
+                            <span class="badge" style="background: rgba(255,255,255,0.2);">Высокий</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: 0.9rem; opacity: 0.9;">
+                        <i class="fas fa-info-circle"></i> Данные извлечены автоматически с помощью AI
+                    </div>
+                </div>
+            </div>
+
+            <!-- Информация об операторе -->
+            <div class="info-card">
+                <div class="card-header" style="margin-bottom: 1rem;">
+                    <div class="card-title">
+                        <i class="fas fa-user-tie"></i>
+                        Информация об операторе
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div class="operator-avatar-large" style="background-color: var(--primary-color);">
+                        А
+                    </div>
+                    <div>
+                        <div style="font-weight: 600; font-size: 1.2rem;">Анна Иванова</div>
+                        <div style="color: var(--gray-color);">Старший оператор</div>
+                        <div style="font-size: 0.9rem; margin-top: 0.25rem;">
+                            <i class="fas fa-phone"></i> +7 927 368 99 93
+                        </div>
+                    </div>
+                </div>
+
+                <div class="operator-stats">
+                    <div class="stat">
+                        <div class="stat-value">94%</div>
+                        <div class="stat-label">Общая успешность</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">8.7</div>
+                        <div class="stat-label">Средняя оценка</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">127</div>
+                        <div class="stat-label">Звонков</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Сильные стороны:</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span class="tag tag-success">Активное слушание</span>
+                        <span class="tag tag-success">Эмпатия</span>
+                        <span class="tag tag-success">Технические знания</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Рекомендации AI для оператора (из анализа эмоций) -->
+            <div class="info-card" style="margin-top: 1.5rem;">
+                <div class="card-header" style="margin-bottom: 1rem;">
+                    <div class="card-title">
+                        <i class="fas fa-robot" style="color: var(--primary-color);"></i>
+                        Рекомендации AI для оператора
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <div style="font-weight: 600; color: var(--success-color); margin-bottom: 0.5rem;">
+                        <i class="fas fa-check-circle"></i> Что сделано хорошо:
+                    </div>
+                    <ul style="padding-left: 1.5rem; margin: 0;">
+                        <li>Быстрое установление контакта</li>
+                        <li>Точные ответы на вопросы</li>
+                        <li>Профессиональное представление продукта</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <div style="font-weight: 600; color: var(--warning-color); margin-bottom: 0.5rem;">
+                        <i class="fas fa-lightbulb"></i> Что можно улучшить:
+                    </div>
+                    <ul style="padding-left: 1.5rem; margin: 0;">
+                        <li>Предложить демонстрацию системы</li>
+                        <li>Уточнить бюджет клиента</li>
+                        <li>Задать больше уточняющих вопросов</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div style="font-weight: 600; color: var(--info-color); margin-bottom: 0.5rem;">
+                        <i class="fas fa-chart-line"></i> Ожидаемый эффект:
+                    </div>
+                    <div style="padding: 0.75rem; background: #f0f9ff; border-radius: 6px;">
+                        Внедрение рекомендаций повысит конверсию на <strong>15-20%</strong> для подобных звонков
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/call-analysis.js"></script>
+    <script>
+        // Инициализация графиков
+        document.addEventListener('DOMContentLoaded', function() {
+            // График успешности
+            const successCtx = document.getElementById('callSuccessChart').getContext('2d');
+            new Chart(successCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Успешность', 'Остальное'],
+                    datasets: [{
+                        data: [92, 8],
+                        backgroundColor: ['#10b981', '#e5e7eb'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    cutout: '70%',
+                    responsive: true,
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // График удовлетворенности
+            const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
+            new Chart(satisfactionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Оценка'],
+                    datasets: [{
+                        label: 'Удовлетворенность',
+                        data: [8.7],
+                        backgroundColor: '#f59e0b',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10
+                        }
+                    }
+                }
+            });
+
+            // График типа обращения
+            const requestCtx = document.getElementById('requestTypeChart').getContext('2d');
+            new Chart(requestCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Консультация', 'Покупка', 'Поддержка'],
+                    datasets: [{
+                        data: [60, 30, 10],
+                        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b']
+                    }]
+                }
+            });
+        });
+    </script>
+}
