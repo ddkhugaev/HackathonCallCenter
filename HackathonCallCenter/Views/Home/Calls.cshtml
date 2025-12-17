@@ -1,0 +1,349 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css">
+    <link rel="stylesheet" href="~/css/charts.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+}
+
+<div class="main-content" style="width: 1597px;">
+    <div class="header">
+        <div class="header-title">
+            <h1>Управление звонками</h1>
+            <p>Все звонки, транскрипции и анализ</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary">
+                <i class="fas fa-filter"></i>
+                Фильтры
+            </button>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Добавить звонок
+            </button>
+            <div class="user-info">
+                <div class="user-avatar">АИ</div>
+                <div>
+                    <div style="font-weight: 600;">Амридин Назаров</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-color);">Администратор</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Фильтры и поиск -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Поиск и фильтрация</div>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <input type="text" class="form-control" placeholder="Поиск по номеру, оператору или ключевым словам...">
+            </div>
+            <div>
+                <select class="form-control" style="width: 200px;">
+                    <option value="">Все типы звонков</option>
+                    <option value="incoming">Входящие</option>
+                    <option value="outgoing">Исходящие</option>
+                    <option value="missed">Пропущенные</option>
+                </select>
+            </div>
+            <div>
+                <select class="form-control" style="width: 200px;">
+                    <option value="">Все статусы</option>
+                    <option value="success">Успешные</option>
+                    <option value="failed">Неуспешные</option>
+                    <option value="pending">В обработке</option>
+                </select>
+            </div>
+            <div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Поиск
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика звонков -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #dbeafe; color: var(--primary-color);">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="stat-info">
+                <h3>847</h3>
+                <p>Входящих звонков</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #d1fae5; color: var(--success-color);">
+                <i class="fas fa-phone-flip"></i>
+            </div>
+            <div class="stat-info">
+                <h3>400</h3>
+                <p>Исходящих звонков</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #fee2e2; color: var(--danger-color);">
+                <i class="fas fa-phone-slash"></i>
+            </div>
+            <div class="stat-info">
+                <h3>52</h3>
+                <p>Пропущенных звонков</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color: #fef3c7; color: var(--warning-color);">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+                <h3>312 ч</h3>
+                <p>Общая длительность</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таблица звонков -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Все звонки</div>
+            <div class="card-actions">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-download"></i>
+                    Экспорт
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-sync"></i>
+                    Обновить
+                </button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Номер телефона</th>
+                        <th>Тип</th>
+                        <th>Оператор</th>
+                        <th>Длительность</th>
+                        <th>Дата и время</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#2457</td>
+                        <td>+7 927 368 99 93</td>
+                        <td><span class="badge badge-incoming">Входящий</span></td>
+                        <td>Анна</td>
+                        <td>4:18</td>
+                        <td>Сегодня, 10:24</td>
+                        <td><span class="badge badge-success">Успешный</span></td>
+                        <td>
+                            <button class="btn-icon" title="Просмотр транскрипции">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="AI анализ">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="btn-icon" title="Скачать аудио">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2456</td>
+                        <td>+963 179 88 77</td>
+                        <td><span class="badge badge-outgoing">Исходящий</span></td>
+                        <td>Леон</td>
+                        <td>7:02</td>
+                        <td>Вчера, 16:42</td>
+                        <td><span class="badge badge-success">Успешный</span></td>
+                        <td>
+                            <button class="btn-icon" title="Просмотр транскрипции">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="AI анализ">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="btn-icon" title="Скачать аудио">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2455</td>
+                        <td>+7 910 555 43 21</td>
+                        <td><span class="badge badge-incoming">Входящий</span></td>
+                        <td>Мария</td>
+                        <td>2:50</td>
+                        <td>Вчера, 14:15</td>
+                        <td><span class="badge badge-danger">Неуспешный</span></td>
+                        <td>
+                            <button class="btn-icon" title="Просмотр транскрипции">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="AI анализ">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="btn-icon" title="Скачать аудио">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2454</td>
+                        <td>+7 495 123 45 67</td>
+                        <td><span class="badge badge-incoming">Входящий</span></td>
+                        <td>Иван</td>
+                        <td>5:32</td>
+                        <td>Вчера, 11:30</td>
+                        <td><span class="badge badge-success">Успешный</span></td>
+                        <td>
+                            <button class="btn-icon" title="Просмотр транскрипции">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="AI анализ">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="btn-icon" title="Скачать аудио">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2453</td>
+                        <td>+7 916 789 12 34</td>
+                        <td><span class="badge badge-outgoing">Исходящий</span></td>
+                        <td>Ольга</td>
+                        <td>3:45</td>
+                        <td>Позавчера, 09:15</td>
+                        <td><span class="badge badge-warning">В процессе</span></td>
+                        <td>
+                            <button class="btn-icon" title="Просмотр транскрипции">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="AI анализ">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="btn-icon" title="Скачать аудио">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2452</td>
+                        <td>+7 903 456 78 90</td>
+                        <td><span class="badge badge-incoming">Входящий</span></td>
+                        <td>Анна</td>
+                        <td>6:12</td>
+                        <td>Позавчера, 15:20</td>
+                        <td><span class="badge badge-success">Успешный</span></td>
+                        <td>
+                            <button class="btn-icon" title="Просмотр транскрипции">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="AI анализ">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="btn-icon" title="Скачать аудио">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2451</td>
+                        <td>+7 925 987 65 43</td>
+                        <td><span class="badge badge-missed">Пропущенный</span></td>
+                        <td>-</td>
+                        <td>0:00</td>
+                        <td>3 дня назад, 11:45</td>
+                        <td><span class="badge badge-danger">Пропущен</span></td>
+                        <td>
+                            <button class="btn-icon" title="Перезвонить">
+                                <i class="fas fa-phone"></i>
+                            </button>
+                            <button class="btn-icon" title="Добавить заметку">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2450</td>
+                        <td>+7 499 876 54 32</td>
+                        <td><span class="badge badge-incoming">Входящий</span></td>
+                        <td>Леон</td>
+                        <td>8:34</td>
+                        <td>3 дня назад, 13:10</td>
+                        <td><span class="badge badge-success">Успешный</span></td>
+                        <td>
+                            <button class="btn-icon" title="Просмотр транскрипции">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-icon" title="AI анализ">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="btn-icon" title="Скачать аудио">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Пагинация -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <div style="color: var(--gray-color); font-size: 0.9rem;">
+                Показано 8 из 1,247 звонков
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn btn-primary">1</button>
+                <button class="btn btn-secondary">2</button>
+                <button class="btn btn-secondary">3</button>
+                <span style="padding: 0.5rem;">...</span>
+                <button class="btn btn-secondary">42</button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div>
+                <select class="form-control" style="width: 120px;">
+                    <option value="10">10 на странице</option>
+                    <option value="25">25 на странице</option>
+                    <option value="50">50 на странице</option>
+                    <option value="100">100 на странице</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- График активности звонков -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Активность звонков по часам</div>
+        </div>
+        <div class="chart-container">
+            <canvas id="callsActivityChart"></canvas>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/calls.js"></script>
+}
