@@ -1,5 +1,7 @@
 ﻿using Hackathon.Ai;
 using Hackathon.Ai.Models;
+using Hackathon.Db;
+using Hackathon.Db.Models;
 namespace HackathonCallCenter.Services
 {
     public class Analyzer
@@ -49,5 +51,12 @@ namespace HackathonCallCenter.Services
             //return result.Analysis.ScriptCompliance;
             return await gptClient.AnalyzeCallDialogueAsync(dialogue, scriptDescription);
         }
+        //public Call ConvertCallAnalysysResultToCall(CallAnalysisResult callAnalysisResult)
+        //{
+        //    Call call = new Call()
+        //    {
+
+        //    };
+        //}
     }
 }
