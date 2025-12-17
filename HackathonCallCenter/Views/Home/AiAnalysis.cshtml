@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <!-- Статистика -->
+    @* <!-- Статистика -->
     <div class="stats-container">
         <div class="stat-card">
             <div class="stat-icon call">
@@ -76,7 +76,7 @@
                 <p>Удовлетворенность клиентов</p>
             </div>
         </div>
-    </div>
+    </div> *@
 
     <!-- Основной контент -->
     <div class="content-grid">
@@ -100,7 +100,7 @@
 
                 <div class="transcript-container">
                     <div class="dialogue">
-                        <!-- Сообщение оператора -->
+                        @* <!-- Сообщение оператора -->
                         <div class="message message-operator">
                             <div class="message-avatar avatar-operator">О</div>
                             <div class="message-content">
@@ -199,7 +199,7 @@
                                     Конечно! Оставьте, пожалуйста, ваш email, и я отправлю все материалы в течение 15 минут. Также можем организовать демонстрацию системы.
                                 </div>
                             </div>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
             </div>
@@ -207,14 +207,15 @@
             <!-- Список звонков -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Недавние звонки</div>
-                    <div class="card-actions">
+                    @* <div class="card-title">Недавние звонки</div> *@
+                    <div class="card-title">Личная информация</div>
+                    @* <div class="card-actions">
                         <button class="btn btn-secondary">Все звонки</button>
-                    </div>
+                    </div> *@
                 </div>
 
                 <div class="calls-list">
-                    <div class="call-item active">
+                    @* <div class="call-item active">
                         <div class="call-icon incoming">
                             <i class="fas fa-phone-alt"></i>
                         </div>
@@ -264,7 +265,7 @@
                                 <span>Пропущенный</span>
                             </div>
                         </div>
-                    </div>
+                    </div> *@
                 </div>
             </div>
         </div>
@@ -280,12 +281,12 @@
 
                 <div class="ai-list">
                     <div class="ai-item">
-                        <div class="ai-item-label">Успешность сделки:</div>
+                        <div class="ai-item-label">Достижение цели звонка</div>
                         <div class="ai-item-value" style="color: var(--success-color);">Высокая (92%)</div>
                     </div>
                     <div class="ai-item">
-                        <div class="ai-item-label">Настроение клиента:</div>
-                        <div class="ai-item-value" style="color: var(--success-color);">Позитивное</div>
+                        <div class="ai-item-label">Наличие конфликта</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Отсутствует</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">Качество работы оператора:</div>
@@ -294,14 +295,12 @@
                     <div class="ai-item">
                         <div class="ai-item-label">Выявленные ключевые слова:</div>
                         <div class="ai-item-value">
-                            <div>
-                                <span class="tag">анализ звонков</span>
-                                <span class="tag">коммерческое предложение</span>
-                                <span class="tag">система</span>
-                                <span class="tag">интонации</span>
-                                <span class="tag">обработка</span>
-                            </div>
+                            <div class="ai-item-value" style="color: var(--success-color);">работает отлично, предложение</div>
                         </div>
+                    </div>
+                    <div class="ai-item">
+                        <div class="ai-item-label">Соблюдение скрипта диалога:</div>
+                        <div class="ai-item-value" style="color: var(--success-color);">Отличное</div>
                     </div>
                 </div>
             </div>
@@ -319,8 +318,8 @@
                         <div class="ai-item-value" style="color: var(--success-color);">Хорошая</div>
                     </div>
                     <div class="ai-item">
-                        <div class="ai-item-label">2. Упоминание продукта:</div>
-                        <div class="ai-item-value" style="color: var(--warning-color);">Можно добавить</div>
+                        <div class="ai-item-label">2. Грамотность речи:</div>
+                        <div class="ai-item-value" style="color: var(--warning-color);">Хорошая</div>
                     </div>
                     <div class="ai-item">
                         <div class="ai-item-label">3. Активное слушание:</div>
@@ -332,27 +331,27 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 1rem; padding: 1rem; background-color: #f0f9ff; border-radius: 8px;">
+@*                 <div style="margin-top: 1rem; padding: 1rem; background-color: #f0f9ff; border-radius: 8px;">
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Совет от AI:</div>
                     <div style="font-size: 0.9rem;">
                         Можно предложить клиенту запланировать демонстрацию системы на конкретное время для увеличения конверсии.
                     </div>
-                </div>
+                </div> *@
             </div>
 
             <!-- Анализ операторов -->
             <div class="ai-card">
                 <div class="ai-title">
                     <i class="fas fa-user-friends ai-icon"></i>
-                    Операторы
+                    Оператор
                 </div>
 
                 <div class="operators-list">
                     <div class="operator-item">
                         <div class="operator-avatar" style="background-color: var(--primary-color);">А</div>
                         <div class="operator-info">
-                            <div class="operator-name">Анна</div>
-                            <div class="operator-phone">+7 927 368 99 93</div>
+                            <div class="operator-name">Анна Лебедева</div>
+@*                             <div class="operator-phone">+7 927 368 99 93</div>
                             <div class="operator-stats">
                                 <div class="stat">
                                     <div class="stat-value">94%</div>
@@ -366,35 +365,10 @@
                                     <div class="stat-value">127</div>
                                     <div class="stat-label">Звонков</div>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="progress-bar">
                                 <div class="progress-fill progress-success" style="width: 94%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="operator-item">
-                        <div class="operator-avatar" style="background-color: var(--success-color);">Л</div>
-                        <div class="operator-info">
-                            <div class="operator-name">Леон</div>
-                            <div class="operator-phone">+963 179 88 77</div>
-                            <div class="operator-stats">
-                                <div class="stat">
-                                    <div class="stat-value">87%</div>
-                                    <div class="stat-label">Успешность</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="stat-value">7.9</div>
-                                    <div class="stat-label">Удовл.</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="stat-value">98</div>
-                                    <div class="stat-label">Звонков</div>
-                                </div>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill progress-warning" style="width: 87%;"></div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>

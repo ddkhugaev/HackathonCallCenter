@@ -6,91 +6,275 @@
     <link rel="stylesheet" href="~/css/dashboard.css">
     <link rel="stylesheet" href="~/css/charts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        .call-analysis-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+        .upload-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        .info-card {
+        .upload-form {
             background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
         }
 
-        .call-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+        }
+
+        .form-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-subtitle {
+            color: #6b7280;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .form-label i {
+                color: var(--primary-color);
+            }
+
+        .form-control-custom {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #f9fafb;
+            color: #111827;
+        }
+
+            .form-control-custom:focus {
+                outline: none;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+                background: white;
+            }
+
+            .form-control-custom::placeholder {
+                color: #9ca3af;
+            }
+
+        .form-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+            .form-hint i {
+                color: #9ca3af;
+                margin-top: 0.125rem;
+            }
+
+        .btn-analyze {
+            width: 100%;
+            padding: 1.125rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
             margin-top: 1rem;
         }
 
-        .detail-item {
-            padding: 0.75rem;
+            .btn-analyze:hover {
+                background: #2563eb;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+            }
+
+            .btn-analyze:active {
+                transform: translateY(0);
+            }
+
+            .btn-analyze:disabled {
+                background: #9ca3af;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+
+        .form-divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+            .form-divider::before,
+            .form-divider::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: #e5e7eb;
+            }
+
+            .form-divider span {
+                padding: 0 1rem;
+            }
+
+        .example-section {
             background: #f8fafc;
-            border-radius: 6px;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--primary-color);
         }
 
-        .detail-label {
-            font-size: 0.85rem;
-            color: var(--gray-color);
-            margin-bottom: 0.25rem;
-        }
-
-        .detail-value {
+        .example-title {
             font-weight: 600;
-            font-size: 1.1rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .charts-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .transcript-section {
+        .example-code {
             background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 0.875rem;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            color: #1f2937;
+            overflow-x: auto;
+            margin-top: 0.5rem;
         }
 
-        .personal-data-card {
-            background: linear-gradient(8deg, #3b82f61a 0%, #3b82f614 100%);
-            color: #151c28d6;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            display: none;
+        }
+
+            .error-message i {
+                font-size: 0.875rem;
+            }
+
+        .input-with-validation {
+            position: relative;
+        }
+
+            .input-with-validation.valid .form-control-custom {
+                border-color: #10b981;
+                background: #f0fdf4;
+            }
+
+            .input-with-validation.invalid .form-control-custom {
+                border-color: #dc2626;
+                background: #fef2f2;
+            }
+
+        .validation-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            display: none;
+        }
+
+        .input-with-validation.valid .validation-icon.fa-check-circle {
+            display: block;
+            color: #10b981;
+        }
+
+        .input-with-validation.invalid .validation-icon.fa-exclamation-circle {
+            display: block;
+            color: #dc2626;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6b7280;
+            font-size: 0.875rem;
         }
     </style>
 }
 
 <div class="main-content">
     <!-- Хедер -->
-    <div class="header">
+    <div class="header" style="width: 898px;">
         <div class="header-title">
-            <h1>Детальный анализ разговора</h1>
-            <p>Полная аналитика конкретного звонка</p>
+            <h1>Анализ разговора</h1>
+            <p>Загрузите аудиофайл для детального AI-анализа</p>
         </div>
         <div class="header-actions">
-            <button class="btn btn-secondary">
-                <i class="fas fa-upload"></i>
-                Загрузить звонок
-            </button>
-            <button class="btn btn-secondary">
-                <i class="fas fa-download"></i>
-                Экспорт отчета
-            </button>
-            <button class="btn btn-primary">
-                <i class="fas fa-share"></i>
-                Поделиться
-            </button>
+            <a asp-controller="Home" asp-action="AiAnalysis" class="btn btn-secondary">
+                <i class="fas fa-history"></i>
+                История анализов
+            </a>
             <div class="user-info">
                 <div class="user-avatar">АИ</div>
                 <div>
@@ -101,392 +285,256 @@
         </div>
     </div>
 
-    <!-- Информация о звонке -->
-    <div class="info-card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <h3 style="margin: 0;">Звонок #2457</h3>
-            <span class="badge badge-success">Успешный</span>
-        </div>
+    <!-- Форма загрузки аудио -->
+    <div class="upload-form-container">
+        <div class="upload-form">
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-wave-square"></i>
+                </div>
+                <h2 class="form-title">AI Анализ аудиозаписи</h2>
+                <p class="form-subtitle">
+                    Введите ссылку на аудиофайл звонка и укажите оператора. Система выполнит транскрипцию,
+                    анализ эмоций и предоставит детальный отчет.
+                </p>
+            </div>
 
-        <div class="call-details">
-            <div class="detail-item">
-                <div class="detail-label">Номер телефона</div>
-                <div class="detail-value">+7 927 368 99 93</div>
-            </div>
-            <div class="detail-item">
-                <div class="detail-label">Оператор</div>
-                <div class="detail-value">Анна Иванова</div>
-            </div>
-            <div class="detail-item">
-                <div class="detail-label">Дата и время</div>
-                <div class="detail-value">Сегодня, 10:24</div>
-            </div>
-            <div class="detail-item">
-                <div class="detail-label">Длительность</div>
-                <div class="detail-value">4 минуты 18 секунд</div>
-            </div>
-            <div class="detail-item">
-                <div class="detail-label">Тип звонка</div>
-                <div class="detail-value"><span class="badge badge-incoming">Входящий</span></div>
-            </div>
-            <div class="detail-item">
-                <div class="detail-label">Тема</div>
-                <div class="detail-value">Интерес к системе аналитики</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="call-analysis-grid">
-        <!-- Левая колонка -->
-        <div>
-            <!-- Транскрипция диалога (из анализа эмоций) -->
-            <div class="transcript-section">
-                <div class="card-header" style="margin-bottom: 1rem;">
-                    <div class="card-title">
-                        <i class="fas fa-comments"></i>
-                        Транскрипция диалога
+            <form id="audioAnalysisForm" method="post" action="@Url.Action("AiAnalysis", "Home")">
+                <!-- Поле для ссылки на аудио -->
+                <div class="form-group">
+                    <label class="form-label" for="audioUrl">
+                        <i class="fas fa-link"></i>
+                        Ссылка на аудиофайл
+                    </label>
+                    <div class="input-with-validation" id="audioUrlContainer">
+                        <input type="url"
+                               class="form-control-custom"
+                               id="audioUrl"
+                               name="audioUrl"
+                               placeholder=""
+                               required
+                               value="">
+                        <i class="fas fa-check-circle validation-icon"></i>
+                        <i class="fas fa-exclamation-circle validation-icon"></i>
                     </div>
-                    <div class="card-actions">
-                        <button class="btn btn-secondary btn-sm">
-                            <i class="fas fa-play"></i>
-                            Прослушать
-                        </button>
+                    <div class="error-message" id="audioUrlError">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Пожалуйста, введите корректную ссылку на аудиофайл
+                    </div>
+                    <div class="form-hint">
+                        <i class="fas fa-info-circle"></i>
+                        Поддерживаемый форматы: OGG. Ссылка должна быть доступна для загрузки.
+                    </div>
+                    <div class="progress-bar" id="audioProgress">
+                        <div class="progress-fill"></div>
                     </div>
                 </div>
 
-                <div class="dialogue">
-                    <div class="message message-operator">
-                        <div class="message-avatar avatar-operator">А</div>
-                        <div class="message-content">
-                            <div class="message-header">
-                                <div class="message-sender">Оператор: Анна</div>
-                                <div class="message-time">00:32</div>
-                            </div>
-                            <div class="message-text">
-                                Здравствуйте! Компания «Голосовые технологии», меня зовут Анна. Чем могу помочь?
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="message message-client">
-                        <div class="message-avatar avatar-client">К</div>
-                        <div class="message-content">
-                            <div class="message-header">
-                                <div class="message-sender">Клиент</div>
-                                <div class="message-time">00:45</div>
-                            </div>
-                            <div class="message-text">
-                                Добрый день! Меня интересует ваша система анализа звонков. Можно узнать подробнее о возможностях?
-                            </div>
-                            <div class="sentiment sentiment-positive">
-                                <i class="fas fa-smile"></i> Настроение: позитивное
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="message message-operator">
-                        <div class="message-avatar avatar-operator">А</div>
-                        <div class="message-content">
-                            <div class="message-header">
-                                <div class="message-sender">Оператор: Анна</div>
-                                <div class="message-time">01:10</div>
-                            </div>
-                            <div class="message-text">
-                                Конечно! Наша система автоматически транскрибирует звонки, анализирует эмоции клиентов, выявляет частые вопросы и помогает улучшить качество обслуживания.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="message message-client">
-                        <div class="message-avatar avatar-client">К</div>
-                        <div class="message-content">
-                            <div class="message-header">
-                                <div class="message-sender">Клиент</div>
-                                <div class="message-time">02:05</div>
-                            </div>
-                            <div class="message-text">
-                                Интересно! А есть ли возможность анализировать не только текст, но и интонации?
-                            </div>
-                            <div class="sentiment sentiment-neutral">
-                                <i class="fas fa-meh"></i> Настроение: нейтральное
-                            </div>
-                        </div>
-                    </div>
+                <div class="form-divider">
+                    <span>Данные оператора</span>
                 </div>
-            </div>
-            <!-- Успешность и удовлетворенность -->
-            <div class="charts-row">
-                <div class="chart-card">
-                    <div class="card-header">
-                        <div class="card-title">Успешность звонка</div>
+
+                <!-- Поле для оператора -->
+                <div class="form-group">
+                    <label class="form-label" for="operatorName">
+                        <i class="fas fa-user-headset"></i>
+                        Оператор (имя и фамилия)
+                    </label>
+                    <div class="input-with-validation" id="operatorNameContainer">
+                        <input type="text"
+                               class="form-control-custom"
+                               id="operatorName"
+                               name="operatorName"
+                               placeholder="Например: Анна Иванова"
+                               required
+                               value="">
+                        <i class="fas fa-check-circle validation-icon"></i>
+                        <i class="fas fa-exclamation-circle validation-icon"></i>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="callSuccessChart" style="margin-left: 60px;"></canvas>
+                    <div class="error-message" id="operatorNameError">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Пожалуйста, укажите имя и фамилию оператора
                     </div>
-                    <div style="text-align: center; margin-top: 1rem;">
-                        <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">92%</div>
-                        <div style="color: var(--gray-color);">Вероятность успешной сделки</div>
+                    <div class="form-hint">
+                        <i class="fas fa-lightbulb"></i>
+                        Укажите оператора, который вел этот разговор для персонализированного анализа
                     </div>
                 </div>
 
-                <div class="chart-card">
-                    <div class="card-header">
-                        <div class="card-title">Удовлетворенность клиента</div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="satisfactionChart"></canvas>
-                    </div>
-                    <div style="text-align: center; margin-top: 1rem;">
-                        <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">8.7/10</div>
-                        <div style="color: var(--gray-color);">Оценка клиента</div>
-                    </div>
+                <!-- Кнопка анализа -->
+                <button type="submit" class="btn-analyze" id="analyzeBtn">
+                    <i class="fas fa-robot"></i>
+                    Запустить AI-анализ
+                </button>
+            </form>
+
+            <!-- Пример ссылки -->
+            <div class="example-section">
+                <div class="example-title">
+                    <i class="fas fa-code"></i>
+                    Пример корректной ссылки:
+                </div>
+                <div class="example-code">
+                    https://storage.yandexcloud.net/bucket-name/folder/call-recording-001.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256...
+                </div>
+                <div class="form-hint" style="margin-top: 0.75rem;">
+                    <i class="fas fa-shield-alt"></i>
+                    Все данные обрабатываются безопасно и не передаются третьим лицам
                 </div>
             </div>
 
-            <!-- Типы обращения клиентов (из аналитики) -->
-            <div class="chart-card" style="margin-top: 1.5rem;">
-                <div class="card-header">
-                    <div class="card-title">Тип обращения клиента</div>
-                </div>
-                <div class="chart-container">
-                    <canvas id="requestTypeChart" style="margin-left: 300px;"></canvas>
-                </div>
-                <div class="chart-legend">
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #3b82f6;"></div>
-                        <span>Консультация</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #10b981;"></div>
-                        <span>Покупка</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #f59e0b;"></div>
-                        <span>Поддержка</span>
-                    </div>
-                </div>
+            <div class="form-footer">
+                <p>
+                    <i class="fas fa-clock"></i>
+                    Среднее время анализа: 2-3 минуты
+                </p>
             </div>
-
-            
-        </div>
-
-        <!-- Правая колонка -->
-        <div>
-            <!-- Личные данные из разговора -->
-            <div class="personal-data-card" style="margin-bottom: 24px;">
-                <div class="card-header" style="margin-bottom: 1rem; color: white;">
-                    <div class="card-title">
-                        <i class="fas fa-user-shield"></i>
-                        Извлеченные данные из разговора
-                    </div>
-                </div>
-
-                <div style="display: grid; gap: 1rem;">
-                    <div class="data-item">
-                        <div class="data-label">
-                            <i class="fas fa-building"></i> Компания клиента
-                        </div>
-                        <div class="data-value">ТехноИнновации</div>
-                    </div>
-
-                    <div class="data-item">
-                        <div class="data-label">
-                            <i class="fas fa-briefcase"></i> Должность
-                        </div>
-                        <div class="data-value">Менеджер по IT</div>
-                    </div>
-
-                    <div class="data-item">
-                        <div class="data-label">
-                            <i class="fas fa-tags"></i> Интересующий продукт
-                        </div>
-                        <div class="data-value">VoiceAnalytics Enterprise</div>
-                    </div>
-
-                    <div class="data-item">
-                        <div class="data-label">
-                            <i class="fas fa-calendar"></i> Сроки внедрения
-                        </div>
-                        <div class="data-value">В течение месяца</div>
-                    </div>
-
-                    <div class="data-item">
-                        <div class="data-label">
-                            <i class="fas fa-money-bill-wave"></i> Бюджет
-                        </div>
-                        <div class="data-value">~ 150 000 руб.</div>
-                    </div>
-
-                    <div class="data-item">
-                        <div class="data-label">
-                            <i class="fas fa-star"></i> Приоритет
-                        </div>
-                        <div class="data-value">
-                            <span class="badge" style="background: rgba(255,255,255,0.2);">Высокий</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 0.9rem; opacity: 0.9;">
-                        <i class="fas fa-info-circle"></i> Данные извлечены автоматически с помощью AI
-                    </div>
-                </div>
-            </div>
-
-            <!-- Информация об операторе -->
-            <div class="info-card">
-                <div class="card-header" style="margin-bottom: 1rem;">
-                    <div class="card-title">
-                        <i class="fas fa-user-tie"></i>
-                        Информация об операторе
-                    </div>
-                </div>
-
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                    <div class="operator-avatar-large" style="background-color: var(--primary-color);">
-                        А
-                    </div>
-                    <div>
-                        <div style="font-weight: 600; font-size: 1.2rem;">Анна Иванова</div>
-                        <div style="color: var(--gray-color);">Старший оператор</div>
-                        <div style="font-size: 0.9rem; margin-top: 0.25rem;">
-                            <i class="fas fa-phone"></i> +7 927 368 99 93
-                        </div>
-                    </div>
-                </div>
-
-                <div class="operator-stats">
-                    <div class="stat">
-                        <div class="stat-value">94%</div>
-                        <div class="stat-label">Общая успешность</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">8.7</div>
-                        <div class="stat-label">Средняя оценка</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">127</div>
-                        <div class="stat-label">Звонков</div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 1rem;">
-                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Сильные стороны:</div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <span class="tag tag-success">Активное слушание</span>
-                        <span class="tag tag-success">Эмпатия</span>
-                        <span class="tag tag-success">Технические знания</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Рекомендации AI для оператора (из анализа эмоций) -->
-            <div class="info-card" style="margin-top: 1.5rem;">
-                <div class="card-header" style="margin-bottom: 1rem;">
-                    <div class="card-title">
-                        <i class="fas fa-robot" style="color: var(--primary-color);"></i>
-                        Рекомендации AI для оператора
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 1rem;">
-                    <div style="font-weight: 600; color: var(--success-color); margin-bottom: 0.5rem;">
-                        <i class="fas fa-check-circle"></i> Что сделано хорошо:
-                    </div>
-                    <ul style="padding-left: 1.5rem; margin: 0;">
-                        <li>Быстрое установление контакта</li>
-                        <li>Точные ответы на вопросы</li>
-                        <li>Профессиональное представление продукта</li>
-                    </ul>
-                </div>
-
-                <div style="margin-bottom: 1rem;">
-                    <div style="font-weight: 600; color: var(--warning-color); margin-bottom: 0.5rem;">
-                        <i class="fas fa-lightbulb"></i> Что можно улучшить:
-                    </div>
-                    <ul style="padding-left: 1.5rem; margin: 0;">
-                        <li>Предложить демонстрацию системы</li>
-                        <li>Уточнить бюджет клиента</li>
-                        <li>Задать больше уточняющих вопросов</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <div style="font-weight: 600; color: var(--info-color); margin-bottom: 0.5rem;">
-                        <i class="fas fa-chart-line"></i> Ожидаемый эффект:
-                    </div>
-                    <div style="padding: 0.75rem; background: #f0f9ff; border-radius: 6px;">
-                        Внедрение рекомендаций повысит конверсию на <strong>15-20%</strong> для подобных звонков
-                    </div>
-                </div>
-            </div>
-
-            
         </div>
     </div>
 </div>
 
 @section Scripts {
-    <script src="~/js/call-analysis.js"></script>
     <script>
-        // Инициализация графиков
         document.addEventListener('DOMContentLoaded', function() {
-            // График успешности
-            const successCtx = document.getElementById('callSuccessChart').getContext('2d');
-            new Chart(successCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Успешность', 'Остальное'],
-                    datasets: [{
-                        data: [92, 8],
-                        backgroundColor: ['#10b981', '#e5e7eb'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    cutout: '70%',
-                    responsive: true,
-                    plugins: { legend: { display: false } }
+            const form = document.getElementById('audioAnalysisForm');
+            const audioUrlInput = document.getElementById('audioUrl');
+            const operatorNameInput = document.getElementById('operatorName');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const audioUrlContainer = document.getElementById('audioUrlContainer');
+            const operatorNameContainer = document.getElementById('operatorNameContainer');
+            const audioUrlError = document.getElementById('audioUrlError');
+            const operatorNameError = document.getElementById('operatorNameError');
+            const audioProgress = document.getElementById('audioProgress');
+            const progressFill = audioProgress.querySelector('.progress-fill');
+
+            // Валидация URL аудио
+            function isValidAudioUrl(url) {
+                if (!url) return false;
+
+                // Проверка формата URL
+                try {
+                    new URL(url);
+                } catch {
+                    return false;
                 }
+
+                // Проверка на аудио файлы (можно расширить)
+                const audioExtensions = ['.mp3', '.wav', '.ogg', '.m4a', '.mp4', '.webm'];
+                return audioExtensions.some(ext => url.toLowerCase().includes(ext));
+            }
+
+            // Валидация имени оператора
+            function isValidOperatorName(name) {
+                if (!name) return false;
+
+                // Имя должно содержать хотя бы одно пробельное разделение (имя и фамилия)
+                const parts = name.trim().split(/\s+/);
+                return parts.length >= 2 && parts.every(part => part.length > 1);
+            }
+
+            // Обновление состояния поля
+            function updateFieldValidation(field, container, errorElement, isValid) {
+                container.classList.remove('valid', 'invalid');
+                errorElement.style.display = 'none';
+
+                if (field.value.trim() === '') {
+                    return;
+                }
+
+                if (isValid) {
+                    container.classList.add('valid');
+                } else {
+                    container.classList.add('invalid');
+                    errorElement.style.display = 'flex';
+                }
+            }
+
+            // Проверка всей формы
+            function validateForm() {
+                const isAudioValid = isValidAudioUrl(audioUrlInput.value.trim());
+                const isOperatorValid = isValidOperatorName(operatorNameInput.value.trim());
+
+                updateFieldValidation(audioUrlInput, audioUrlContainer, audioUrlError, isAudioValid);
+                updateFieldValidation(operatorNameInput, operatorNameContainer, operatorNameError, isOperatorValid);
+
+                return isAudioValid && isOperatorValid;
+            }
+
+            // События ввода
+            audioUrlInput.addEventListener('input', function() {
+                updateFieldValidation(
+                    audioUrlInput,
+                    audioUrlContainer,
+                    audioUrlError,
+                    isValidAudioUrl(audioUrlInput.value.trim())
+                );
             });
 
-            // График удовлетворенности
-            const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
-            new Chart(satisfactionCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Оценка'],
-                    datasets: [{
-                        label: 'Удовлетворенность',
-                        data: [8.7],
-                        backgroundColor: '#f59e0b',
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 10
-                        }
+            operatorNameInput.addEventListener('input', function() {
+                updateFieldValidation(
+                    operatorNameInput,
+                    operatorNameContainer,
+                    operatorNameError,
+                    isValidOperatorName(operatorNameInput.value.trim())
+                );
+            });
+
+            // Обработка отправки формы
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (!validateForm()) {
+                    // Показать ошибки
+                    audioUrlInput.dispatchEvent(new Event('input'));
+                    operatorNameInput.dispatchEvent(new Event('input'));
+                    return;
+                }
+
+                // Показать прогресс
+                analyzeBtn.disabled = true;
+                analyzeBtn.innerHTML = '<i class="fas fa-cog fa-spin"></i> Подготовка анализа...';
+                audioProgress.style.display = 'block';
+
+                // Анимация прогресса
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += 10;
+                    progressFill.style.width = progress + '%';
+
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+
+                        // Сохраняем данные в localStorage для передачи на страницу анализа
+                        const analysisData = {
+                            audioUrl: audioUrlInput.value.trim(),
+                            operatorName: operatorNameInput.value.trim(),
+                            timestamp: new Date().toISOString()
+                        };
+                        localStorage.setItem('callAnalysisData', JSON.stringify(analysisData));
+
+                        // Перенаправляем на страницу анализа эмоций
+                        window.location.href = '@Url.Action("AiAnalysis", "Home")';
                     }
-                }
+                }, 50);
             });
 
-            // График типа обращения
-            const requestCtx = document.getElementById('requestTypeChart').getContext('2d');
-            new Chart(requestCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['Консультация', 'Покупка', 'Поддержка'],
-                    datasets: [{
-                        data: [60, 30, 10],
-                        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b']
-                    }]
+            // Загрузка сохраненных данных (если есть)
+            const savedData = localStorage.getItem('callAnalysisData');
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    if (data.audioUrl) audioUrlInput.value = data.audioUrl;
+                    if (data.operatorName) operatorNameInput.value = data.operatorName;
+
+                    // Запускаем валидацию для отображения состояния
+                    setTimeout(() => {
+                        audioUrlInput.dispatchEvent(new Event('input'));
+                        operatorNameInput.dispatchEvent(new Event('input'));
+                    }, 100);
+                } catch (e) {
+                    console.error('Ошибка загрузки сохраненных данных:', e);
                 }
-            });
+            }
         });
     </script>
 }
