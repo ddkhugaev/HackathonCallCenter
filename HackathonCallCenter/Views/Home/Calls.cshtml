@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model List<Call>
 @section Styles {
     <link rel="stylesheet" href="~/css/dashboard.css">
     <link rel="stylesheet" href="~/css/charts.css">
@@ -135,13 +135,43 @@
                         <th>Номер телефона</th>
                         <th>Тип</th>
                         <th>Оператор</th>
-                        <th>Длительность</th>
-                        <th>Дата и время</th>
+                        @* <th>Длительность</th>
+                        <th>Дата и время</th> *@
                         <th>Статус</th>
-                        <th>Действия</th>
+                        @* <th>Действия</th> *@
+                        <th>Качество работы</th>
+                        <th>Решение проблемы</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var call in Model)
+                    {
+                        <tr>
+                            <td>@call.Id</td>
+                            <td>+7 927 368 99 93</td>
+                            <td><span class="badge badge-incoming">Входящий</span></td>
+                            <td>@call.Agent.FullName</td>
+                            @* <td>4:18</td>
+                            <td>Сегодня, 10:24</td> *@
+                            <td><span class="badge badge-success">@call.GoalAchievement</span></td>
+                            @* <td>
+                                <button class="btn-icon" title="Просмотр транскрипции">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon" title="AI анализ">
+                                    <i class="fas fa-robot"></i>
+                                </button>
+                                <button class="btn-icon" title="Скачать аудио">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </td> *@
+                            <td>@call.OperatorQuality</td>
+                            <td>@call.ProblemSolving</td>
+                            <td><a asp-controller="Home" asp-action="AiAnalysis" asp-route-id="@call.Id">Подробнее</a></td>
+                        </tr>
+                    }
+                    <!--
                     <tr>
                         <td>#2457</td>
                         <td>+7 927 368 99 93</td>
@@ -299,12 +329,13 @@
                             </button>
                         </td>
                     </tr>
+                    -->
                 </tbody>
             </table>
         </div>
 
         <!-- Пагинация -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        @* <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
             <div style="color: var(--gray-color); font-size: 0.9rem;">
                 Показано 8 из 1,247 звонков
             </div>
@@ -329,18 +360,18 @@
                     <option value="100">100 на странице</option>
                 </select>
             </div>
-        </div>
+        </div> *@
     </div>
 
     <!-- График активности звонков -->
-    <div class="card">
+    @* <div class="card">
         <div class="card-header">
             <div class="card-title">Активность звонков по часам</div>
         </div>
         <div class="chart-container">
             <canvas id="callsActivityChart"></canvas>
         </div>
-    </div>
+    </div> *@
 </div>
 
 @section Scripts {
