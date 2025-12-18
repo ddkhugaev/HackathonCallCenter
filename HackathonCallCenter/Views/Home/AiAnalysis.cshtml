@@ -1,5 +1,5 @@
 ﻿@using Hackathon.Db.Models
-@model Call
+@model CallViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -102,37 +102,52 @@
 
                 <div class="transcript-container">
                     <div class="dialogue">
-                        <div class="message-text">@Model.TranscriptionText </div>
-                        @* <!-- Сообщение оператора -->
-                        <div class="message message-operator">
-                            <div class="message-avatar avatar-operator">О</div>
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <div class="message-sender">Оператор: Анна</div>
-                                    <div class="message-time">00:32</div>
-                                </div>
-                                <div class="message-text">
-                                    Здравствуйте! Компания «Голосовые технологии», меня зовут Анна. Чем могу помочь?
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Сообщение клиента -->
-                        <div class="message message-client">
-                            <div class="message-avatar avatar-client">К</div>
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <div class="message-sender">Клиент: +7 927 368 99 93</div>
-                                    <div class="message-time">00:45</div>
-                                </div>
-                                <div class="message-text">
-                                    Добрый день! Меня интересует ваша система анализа звонков. Можно узнать подробнее о возможностях?
-                                </div>
-                                <div class="sentiment sentiment-positive">Настроение: позитивное</div>
-                            </div>
-                        </div>
+                        @* <div class="message-text">@Model.TranscriptionText </div> *@
+                        @if (Model.TranscriptionText != null)
+                        {
+                            @foreach (var dialogueLine in Model?.TranscriptionText)
+                            {
+                                @if (dialogueLine.Role == "Оператор")
+                                {
+                                    <!-- Сообщение оператора -->
+                                    <div class="message message-operator">
+                                        <div class="message-avatar avatar-operator">О</div>
+                                        <div class="message-content">
+                                            <div class="message-header">
+                                                <div class="message-sender">Оператор: @Model?.Agent?.FullName</div>
+                                                @* <div class="message-time">00:32</div> *@
+                                            </div>
+                                            <div class="message-text">
+                                                @dialogueLine.Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <!-- Сообщение клиента -->
+                                    <div class="message message-client">
+                                        <div class="message-avatar avatar-client">К</div>
+                                        <div class="message-content">
+                                            <div class="message-header">
+                                                <div class="message-sender">Клиент:</div>
+                                                @* <div class="message-time">00:45</div> *@
+                                            </div>
+                                            <div class="message-text">
+                                                @dialogueLine.Text
+                                            </div>
+                                            @* <div class="sentiment sentiment-positive">Настроение: позитивное</div> *@
+                                        </div>
+                                    </div>
+                                }
 
-                        <!-- Сообщение оператора -->
+                            }
+                        }
+                        
+                        
+                        
+
+                        @*<!-- Сообщение оператора -->
                         <div class="message message-operator">
                             <div class="message-avatar avatar-operator">О</div>
                             <div class="message-content">
@@ -145,7 +160,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <!-- Сообщение клиента -->
                         <div class="message message-client">
                             <div class="message-avatar avatar-client">К</div>

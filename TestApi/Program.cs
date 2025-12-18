@@ -11,7 +11,7 @@ class Program
             var speechClient = new YandexSpeechKitClient();
 
             //Тестовая ссылка на аудио (можно заменить на свою)
-            string audioUri = "https://storage.yandexcloud.net/pictures-sogu/%D0%9C%D1%83%D0%B7%D0%B5%D0%B9%20%D0%BA%D0%BE%D0%BB%D0%BB%20%D1%86%D0%B5%D0%BD%D1%82%D1%80.ogg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEpmZKNWc7mXWszkSkTE2E%2F20251217%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20251217T085443Z&X-Amz-Expires=43200&X-Amz-Signature=5397e5fe70ab2929fda93b576dba39bfe86db15c6d2e7c970345a7ae36a267d9&X-Amz-SignedHeaders=host&response-content-disposition=attachment";
+            string audioUri = "https://storage.yandexcloud.net/pictures-sogu/%D1%80%D1%83%D0%B3%D0%B0%D1%8E%D1%82%D1%81%D1%8F.ogg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEpmZKNWc7mXWszkSkTE2E%2F20251217%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20251217T214316Z&X-Amz-Expires=72000&X-Amz-Signature=c5b0c885dba8fb3a7fde1fb732b7b92d3c8f122cbedc44615e05b7f8ca01a91a&X-Amz-SignedHeaders=host&response-content-disposition=attachment";
 
             Console.WriteLine($"\nИспользуемая ссылка на аудио: {audioUri}");
 
@@ -30,7 +30,7 @@ class Program
             var gptClient = new YandexGptClient();
 
             var transcript = await gptClient.GetGptResponseAsync(recognizedText, "Определение дикторов в результатах распознавания. Говорит 'оператор' и 'клиент'. Ты должен перед каждым началом фразы приписать кто ее говорит.");
-
+            Console.WriteLine(transcript);
             var scriptDescription = """
         Стандартный скрипт колл-центра включает:
         1. Приветствие и представление

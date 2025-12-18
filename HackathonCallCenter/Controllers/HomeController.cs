@@ -5,6 +5,7 @@ using HackathonCallCenter.Services;
 using Hackathon.Db;
 using Hackathon.Db.Models;
 using System.Threading.Tasks;
+using HackathonCallCenter.Helpers;
 
 namespace HackathonCallCenter.Controllers
 {
@@ -55,7 +56,22 @@ namespace HackathonCallCenter.Controllers
         {
             ViewData["Title"] = "Анализ звонка";
             var call = await callsRepository.TryGetByIdAsync(id);
-            return View(call);
+            var callViewModel = new CallViewModel
+            {
+                Agent = call.Agent,
+                AudioFileUrl = call.AudioFileUrl,
+                TranscriptionText = DialogueParser.ParseDialogue(call.TranscriptionText),
+                PersonalData = call.PersonalData,
+                GoalAchievement = call.GoalAchievement,
+                HasConflict = call.HasConflict,
+                OperatorQuality = call.OperatorQuality,
+                ScriptCompliance = call.ScriptCompliance,
+                ResponseSpeed = call.ResponseSpeed,
+                SpeechGrammar = call.SpeechGrammar,
+                ActiveListening = call.ActiveListening,
+                ProblemSolving = call.ProblemSolving
+            };
+            return View(callViewModel);
         }
 
         public IActionResult Recommendations()
