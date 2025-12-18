@@ -36,6 +36,13 @@ namespace HackathonCallCenter.Controllers
         {
             ViewData["Title"] = "Звонки";
             var calls = await callsRepository.GetAllAsync();
+            foreach (var call in calls)
+            {
+                if (call.Agent == null)
+                {
+                    call.Agent = await agentsRepository.TryGetByIdAsync(call.AgentId);
+                }
+            }
             return View(calls);
         }
 
