@@ -24,7 +24,7 @@ namespace Hackathon.Db
 
         public async Task<List<Call>> GetAllAsync()
         {
-            return await databaseContext.Calls.ToListAsync();
+            return await databaseContext.Calls.Include(c => c.Agent).ToListAsync();
         }
 
         public async Task RemoveAsync(Call call)
